@@ -14,8 +14,7 @@
     <tr>
       <% @customers.each do |customer| %>
         <th><%= customer.id %></th>
-        <!--<th><%= customer.last_name customer.first_name %></th>-->
-        <th><%= customer.name %></th>
+        <th><%= customer.last_name customer.first_name %>
         <th><%= customer.email %></th>
         <th><%= customer.is_deleted %></th>
       <% end %>
