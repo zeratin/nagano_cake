@@ -1,0 +1,29 @@
+<header>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+		  <a class="navbar-brand">
+				nagano_cake
+			</a>
+		</div>
+		<div class="navbar-guest-name ">
+		  <div class="navbar-text">ようこそXXXさん。</div>
+		</div>
+		<div class="collapse navbar-collapse navbar-right">
+			<ul class="nav navbar-nav">
+			  <% if customer_signed_in? %>
+				<li>マイページ</li>
+				<li>商品一覧</li>
+				<li>カート</li>
+				<li>ログアウト</li>
+				<% else %>
+				<li>About</li>
+				<li>商品一覧</li>
+				<li>新規登録</li>
+				<li>ログイン</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
