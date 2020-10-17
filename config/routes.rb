@@ -8,16 +8,20 @@ Rails.application.routes.draw do
       passwords:'admins/passwords'
     }
 
+
   scope module: 'customers' do
+
     devise_for :customers, controllers:{
       sessions:'customers/sessions',
       registrations:'customers/registrations',
       passwords:'customers/passwords'
     }
 
+
   end
   resources :admin do
     resources :genres, only: [:index, :create, :edit, :update]
   end
+
 
 end
