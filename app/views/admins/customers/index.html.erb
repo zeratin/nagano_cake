@@ -1,0 +1,23 @@
+<%= render 'admins/homes/header' %>
+
+<h3>会員一覧</h3>
+<table>
+  <thead>
+    <tr>
+	  <th>会員ID</th>
+	  <th>氏名</th>
+	  <th>メールアドレス</th>
+ 	  <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @customers.each do |customer| %>
+        <th><%= customer.id %></th>
+        <th><%= customer.last_name customer.first_name %>
+        <th><%= customer.email %></th>
+        <th><%= customer.is_deleted %></th>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
