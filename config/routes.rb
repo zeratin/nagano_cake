@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admins do
-    get 'homes/top'
-  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admins do
     devise_for :admins, controllers:{
@@ -10,6 +7,8 @@ Rails.application.routes.draw do
       registrations:'admins/registrations',
       passwords:'admins/passwords'
     }
+    root 'admins/homes#top'
+    get 'homes/top'
   end
   scope module: 'customers' do
     devise_for :customers, controllers:{
@@ -18,5 +17,5 @@ Rails.application.routes.draw do
       passwords:'customers/passwords'
     }
   end
-  
+
 end
