@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_10_15_065821) do
-=======
-ActiveRecord::Schema.define(version: 2020_10_16_150923) do
->>>>>>> bc248502d2348519f43beb8d5814096b0666745d
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -33,10 +29,7 @@ ActiveRecord::Schema.define(version: 2020_10_16_150923) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
-=======
     t.string "name"
->>>>>>> bc248502d2348519f43beb8d5814096b0666745d
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -55,10 +48,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_150923) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-<<<<<<< HEAD
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-=======
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -69,7 +60,6 @@ ActiveRecord::Schema.define(version: 2020_10_16_150923) do
     t.string "phone_number"
     t.string "address"
     t.string "postal_code"
->>>>>>> bc248502d2348519f43beb8d5814096b0666745d
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -114,5 +104,4 @@ ActiveRecord::Schema.define(version: 2020_10_16_150923) do
     t.datetime "updated_at", null: false
     t.integer "customer_id"
   end
-
 end
