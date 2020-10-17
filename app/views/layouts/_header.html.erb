@@ -2,29 +2,34 @@
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-		  <a class="navbar-brand">
-				nagano_cake
+		  <a class="logo">
+				<%= link_to 'ながのcake', root_path, class: 'navbar-brand' %>
 			</a>
 		</div>
-		<div class="navbar-guest-name ">
-		  <div class="navbar-text">ようこそXXXさん。</div>
+		<div class="navbar-guest-name">
+			<% if customer_signed_in? %>
+			  <p class="navbar-text">ようこそcustomer_nameさん</p>
+			<% else %>
+		      <p class="navbar-text">ようこそゲストさん</p>
+		    <% end %>
 		</div>
-		
+
 		<div class="collapse navbar-collapse navbar-right">
 			<ul class="nav navbar-nav">
-			  <% if user_signed_in? %>
+			  <% if customer_signed_in? %>
 				<li>マイページ</li>
-				<li>商品一覧</li>
+				<li><%= link_to '商品一覧', items_path %></li>
 				<li>カート</li>
 				<li>ログアウト</li>
 			  <% else %>
-				<li>About</li>
-				<li>商品一覧</li>
-				<li>新規登録</li>
-				<li>ログイン</li>
+				<li><%= link_to 'About', home_about_path %></li>
+				<li><%= link_to '商品一覧', items_path %></li>
+				<li><%= link_to '新規登録', root_path %></li>
+				<li><%= link_to 'ログイン', root_path %></li>
+				<!--新規とログインのパスがまだわからないのでtopのリンクになってます-->
 			  <% end %>
 			</ul>
-			
+
 		</div>
 	</div>
 </nav>
