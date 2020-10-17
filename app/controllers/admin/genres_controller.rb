@@ -1,4 +1,5 @@
 class Admin::GenresController < ApplicationController
+  before_action :authenticate_admin!, except: [:show]
 
   def index
     @genre = Genre.new
@@ -17,6 +18,9 @@ class Admin::GenresController < ApplicationController
   end
 
   def show
+    @items = Item.all
+    @genre = Genre.find(params[:id])
+    @genres = @genre.items.order
   end
 
   def edit
@@ -38,5 +42,9 @@ class Admin::GenresController < ApplicationController
     else
        render :edit and return
     end
+  end
+
+  def genre_params
+    params.require(:genre).permit(:name, :is_active)
   end
 end
