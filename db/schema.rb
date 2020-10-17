@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_150923) do
+
+ActiveRecord::Schema.define(version: 2020_10_15_065821) do
+
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -47,6 +49,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_150923) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,6 +68,15 @@ ActiveRecord::Schema.define(version: 2020_10_16_150923) do
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "item_genres", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_item_genres_on_genre_id"
+    t.index ["item_id"], name: "index_item_genres_on_item_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -99,5 +112,4 @@ ActiveRecord::Schema.define(version: 2020_10_16_150923) do
     t.datetime "updated_at", null: false
     t.integer "customer_id"
   end
-
 end
