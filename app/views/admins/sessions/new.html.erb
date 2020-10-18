@@ -1,20 +1,25 @@
-<%= render 'admins/homes/header' %>
+<%= render 'layouts/header' %>
+<div class="container">
+  <h3>管理者ログイン</h3>
 
-<h3>管理者ログイン</h3>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row">
+      <div class="col-xs-5 col-xs-offset-4">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5 col-xs-offset-4">
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
+    <div class="row">
+      <div class="col-xs-5 col-xs-offset-5">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
