@@ -2,10 +2,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'homes/top'
-
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -16,18 +14,17 @@ Rails.application.routes.draw do
   }
 
     resources :customers,only: [:index,:show,:edit,:update]
-  	  resources :items,only: [:index,:new,:create,:show,:edit,:update,]
-  	  get 'top'=>'items#top'
-  	  resources :genres,only: [:index,:create,:edit,:update, :show]
-  	  resources :orders,only: [:index,:show,:update] do
-  	   member do
+  	resources :items,only: [:index,:new,:create,:show,:edit,:update,]
+  	get 'top'=>'items#top'
+  	resources :orders,only: [:index,:show,:update] do
+  	  member do
         get :current_index
         resource :order_details,only: [:update]
-       end
-       collection do
-        get :today_order_index
-       end
       end
+      collection do
+        get :today_order_index
+      end
+    end
 
   scope module: 'customers' do
     devise_for :customers, controllers:{
@@ -35,8 +32,6 @@ Rails.application.routes.draw do
       registrations:'customers/registrations',
       passwords:'customers/passwords'
     }
-
-
   end
 
 end
