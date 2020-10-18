@@ -4,5 +4,5 @@ class Genre < ApplicationRecord
   validates :name, uniqueness: true
 
   has_many :items
-  varidates :name, presence: true
+  validates :name, presence: true
 end
