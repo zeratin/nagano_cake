@@ -1,8 +1,4 @@
 class Item < ApplicationRecord
-<<<<<<< HEAD
-
-  belongs_to :genre
-=======
   has_many :item_genres, dependent: :destroy
   has_many :genres, through: :item_genres
   scope :regexp_days, -> (pattern){ where("items.days REGEXP ?", pattern) }
@@ -19,5 +15,6 @@ class Item < ApplicationRecord
 
     items
   end
->>>>>>> f2ee6704a4fee058d7f6f0ee1cd861718d0d4834
+
+  belongs_to :genre
 end
