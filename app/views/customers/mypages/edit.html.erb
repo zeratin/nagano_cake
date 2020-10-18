@@ -1,0 +1,109 @@
+<h3>登録情報編集</h3>
+
+<table class="table">
+  <tr>
+    <th>名前</th>
+    <th>
+      <form class="form-horizontal">
+        <div class="form-group">
+		      <label class="col-sm-2 control-label" for="InputFirst_name">姓</label>
+		      <div class="col-sm-10">
+			      <input type="first_name" class="form-control" id="InputFirst_name" placeholder="姓">
+		      </div>
+	      </div>
+	  </th>
+	  <th>
+	    <form class="form-horizontal">
+	      <div class="form-group">
+		      <label class="col-sm-2 control-label" for="InputLast_name">名</label>
+		      <div class="col-sm-10">
+			      <input type="last_name" class="form-control" id="InputLast_name" placeholder="名">
+		      </div>
+       	</div>
+	  </th>
+  </tr>
+
+  <tr>
+    <th>フリガナ</th>
+    <th>
+      <form class="form-horizontal">
+	      <div class="form-group">
+	      	<label class="col-sm-2 control-label" for="InputFirst_name_kana">セイ</label>
+		      <div class="col-sm-10">
+		    	  <input type="first_name_kana" class="form-control" id="InputFirst_name_kana" placeholder="セイ">
+	       	</div>
+      	</div>
+    </th>
+    <th>
+      <form class="form-horizontal">
+       	<div class="form-group">
+	　　　	<label class="col-sm-2 control-label" for="InputLast_name_kana">メイ</label>
+	　　　	<div class="col-sm-10">
+			　　　<input type="last_name_kana" class="form-control" id="InputLast_name_kana" placeholder="メイ">
+		　　　</div>
+	　　　</div>
+    </th>
+  </tr>
+
+  <tr>
+    <th>メールアドレス</th>
+    <th>
+      <form class="form-horizontal">
+	      <div class="form-group">
+      		<label class="col-sm-2 control-label" for="InputEmail"></label>
+	      	<div class="col-sm-10">
+			      <input type="email" class="form-control" id="InputEmail" placeholder="メールアドレス">
+		      </div>
+	      </div>
+    </th>
+  </tr>
+
+  <tr>
+    <th>郵便番号(ハイフンなし)</th>
+    <th>
+      <form class="form-horizontal">
+	      <div class="form-group">
+       		<label class="col-sm-2 control-label" for="InputPostal_code"></label>
+		      <div class="col-sm-10">
+		      	<input type="postal_code" class="form-control" id="InputPostal_code" placeholder="郵便番号(ハイフンなし)">
+		      </div>
+      	</div>
+    </th>
+  </tr>
+
+  <tr>
+    <th>住所</th>
+    <th>
+      <form class="form-horizontal">
+	      <div class="form-group">
+	      	<label class="col-sm-2 control-label" for="InputAddress"></label>
+	      	<div class="col-sm-10">
+		      	<input type="address" class="form-control" id="InputAddress" placeholder="住所">
+	      	</div>
+    	</div>
+    </th>
+  </tr>
+
+  <tr>
+    <th>電話番号(ハイフンなし)</th>
+    <th>
+      <form class="form-horizontal">
+	      <div class="form-group">
+	      	<label class="col-sm-2 control-label" for="InputPhone_number"></label>
+	      	<div class="col-sm-10">
+		      	<input type="phone_number" class="form-control" id="InputPhone_number" placeholder="電話番号">
+	      	</div>
+    	</div>
+    </th>
+  </tr>
+
+  <tr>
+    <th>
+      <%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
+    </th>
+    <th>
+      <%= link_to "退会する", class: "btn btn-danger" %>
+    </th>
+    <!--退会確認画面へのリンクパスがルートにないので未入力-->
+  </tr>
+</table>

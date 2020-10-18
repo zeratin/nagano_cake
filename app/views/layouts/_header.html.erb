@@ -17,15 +17,15 @@
 		<div class="collapse navbar-collapse navbar-right">
 			<ul class="nav navbar-nav">
 			  <% if customer_signed_in? %>
-				<li>マイページ</li>
+				<li><%= link_to 'マイページ', %></li>
 				<li><%= link_to '商品一覧', items_path %></li>
 				<li>カート</li>
-				<li>ログアウト</li>
+				<li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
 			  <% else %>
 				<li><%= link_to 'About', home_about_path %></li>
 				<li><%= link_to '商品一覧', items_path %></li>
-				<li><%= link_to '新規登録', root_path %></li>
-				<li><%= link_to 'ログイン', root_path %></li>
+				<li><%= link_to '新規登録', new_customer_registration_path %></li>
+				<li><%= link_to 'ログイン', new_customer_session_path %></li>
 				<!--新規とログインのパスがまだわからないのでtopのリンクになってます-->
 			  <% end %>
 			</ul>
