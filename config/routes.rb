@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'homes/top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :show, :edit, :update]
+    resources :orders, only: [:index, :show]
   end
   # 管理者側設定ここまで
 
