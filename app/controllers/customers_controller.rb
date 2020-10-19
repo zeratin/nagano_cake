@@ -18,12 +18,21 @@ class CustomersController < ApplicationController
   def update
      @customer = Customer.find(params[:id])
      if @customer.update(customer_params)
-       redirect_to customer_path
+       redirect_to customer_path(current_customer)
+     else
+       render 'edit'
      end
      if @is_deleted.update(customer_params)
        
        redirect_to root_path
      end 
+  end
+
+  def unsubscribe
+  end
+
+  def withdraw
+    sign_out_and_redirect(current_customer)
   end
 
    private
