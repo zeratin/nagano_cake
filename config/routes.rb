@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :items
   resources :carts
   resources :orders
+  resources :addresses
+  post 'addresses/create' => 'addresses#index'
+  patch 'addresses/update' => 'addresses#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     devise_for :admins, controllers:{
