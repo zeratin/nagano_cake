@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-# 以下管理者側設定
-  namespace :admins do
-    get 'homes/top'
-    resources :customers, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :create, :show, :edit, :update]
-  end
-
+  # 以下管理者側設定
   devise_for :admins, controllers:{
     sessions:'admins/sessions',
     registrations:'admins/registrations',
     passwords:'admins/passwords'
   }
+
+  namespace :admins do
+    get 'homes/top'
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :show, :edit, :update]
+  end
   # 管理者側設定ここまで
 
   resources :customers,only: [:index,:show,:edit,:update]
-  resources :items,only: [:index,:new,:create,:show,:edit,:update,]
+  resources :items,only: [:index,:new,:create,:show,:edit,:update]
   get 'top'=>'items#top'
   resources :orders,only: [:index,:show,:update] do
     member do
