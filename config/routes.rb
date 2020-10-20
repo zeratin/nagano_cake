@@ -15,11 +15,11 @@ Rails.application.routes.draw do
     passwords:'admins/passwords'
   }
 
-    resources :customers,only: [:index,:show,:edit,:update]
-  	  resources :items,only: [:index,:new,:create,:show,:edit,:update,]
+    resources :customers,only: [:index, :show, :edit, :update]
+  	  resources :items,only: [:index, :new, :create, :show, :edit, :update,]
   	  get 'top'=>'items#top'
-  	  resources :genres,only: [:index,:create,:edit,:update, :show]
-  	  resources :orders,only: [:index,:show,:update] do
+  	  resources :genres,only: [:index, :create, :edit, :update, :show]
+  	  resources :orders,only: [:index, :show, :update] do
   	   member do
         get :current_index
         resource :order_details,only: [:update]

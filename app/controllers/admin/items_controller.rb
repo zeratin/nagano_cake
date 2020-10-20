@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  before_action :set_items, only[:show, :edit, :update]
   before_action :set_genres, only[:new, :eidit, :index, :create, :update]
 
   def new
@@ -26,13 +27,19 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.update(item_params)
+    if flash[:notice] = "商品内容を変更しました"
+        redirect_to admin_item_path(@item)
+    else
+        render :edit
+    end
   end
 
   private
 
-  def product_params
-    params.require(:product).permit(:name, :image, :introduction,
-       :genre_id, :, :is_active)
+  def item_params
+    params.require(:item).permit(:name, :image, :introduction,
+       :genre_id, :tax_included_price, :is_active)
   end
 
   def set_genres
