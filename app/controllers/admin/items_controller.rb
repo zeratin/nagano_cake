@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+
   before_action :set_items, only[:show, :edit, :update]
   before_action :set_genres, only[:new, :eidit, :index, :create, :update]
 
@@ -18,6 +19,11 @@ class Admin::ItemsController < ApplicationController
 
   def index
    @items = Item.all.page(params[:page]).per(10)
+
+
+
+
+
   end
 
   def show
@@ -33,6 +39,7 @@ class Admin::ItemsController < ApplicationController
     else
         render :edit
     end
+
   end
 
   private
