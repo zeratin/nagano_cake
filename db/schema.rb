@@ -68,15 +68,6 @@ ActiveRecord::Schema.define(version: 2020_10_17_093323) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "item_genres", force: :cascade do |t|
-    t.bigint "item_id"
-    t.bigint "genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_item_genres_on_genre_id"
-    t.index ["item_id"], name: "index_item_genres_on_item_id"
-  end
-
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "introduction"

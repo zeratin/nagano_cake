@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :show, :edit, :update]
     resources :orders, only: [:index, :show]
+    patch 'orders/:id' => 'orders#status_update'
   end
   # 管理者側設定ここまで
 

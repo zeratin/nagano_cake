@@ -13,17 +13,18 @@
           </tr>
         </thead>
         <tbody>
-          <% @orders.each do |orders| %>
+          <% @orders.each do |order| %>
             <tr>
               <td>
-                <%= link_to orders.created_at.strftime('%Y/%m/%d %H:%M:%S'), admins_order_path(orders.id) %>
+                <%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admins_order_path(order) %>
               </td>
               <td>
-                <%= orders.customer.last_name %><%= orders.customer.first_name %>
+                <%= order.customer.last_name %><%= order.customer.first_name %>
               </td>
               <td><%=  %></td>
+              注文
               <td>
-                <%=  %>
+                <%= order.status %>
               </td>
             </tr>
           <% end %>
