@@ -15,4 +15,6 @@ class Item < ApplicationRecord
 
     items
   end
+
+  belongs_to :genre
 end

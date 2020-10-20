@@ -1,32 +1,54 @@
 Rails.application.routes.draw do
-  
-  root 'homes#top'
-  get 'home/about' => 'homes#about'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    devise_for :admins, controllers:{
-      sessions:'admins/sessions',
-      registrations:'admins/registrations',
-      passwords:'admins/passwords'
-    }
 
+  scope module: 'customers' do
     devise_for :customers, controllers:{
       sessions:'customers/sessions',
       registrations:'customers/registrations',
       passwords:'customers/passwords'
     }
+  end
 
-  resources :items
+  
+  root 'homes#top'
+  get 'home/about' => 'homes#about'
+
   resources :carts
   resources :orders
   resources :addresses
   post 'addresses/create' => 'addresses#index'
   patch 'addresses/update' => 'addresses#index'
 
-  resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw] do
+  resources :customers, only: [:index, :show, :edit, :update, :unsubscribe, :withdraw] do
     get 'unsubscribe' => 'customers#unsubscribe'
     patch 'withdraw' => 'customers#withdraw'
   end
   get 'customer/get' => 'customers#show'
   patch 'customer/update' => 'customers#show'
+
+  devise_for :admins, controllers:{
+    sessions:'admins/sessions',
+    registrations:'admins/registrations',
+    passwords:'admins/passwords'
+  }
+  
+
+  namespace :admins do
+    get '/' => 'homes#top' 
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :show, :edit, :update]
+  end
+
+  resources :items,only: [:index,:new,:create,:show,:edit,:update]
+  get 'top'=>'items#top'
+  resources :orders,only: [:index,:show,:update] do
+    member do
+      get :current_index
+      resource :order_details,only: [:update]
+    end
+    collection do
+      get :today_order_index
+    end
+  end
+
 end

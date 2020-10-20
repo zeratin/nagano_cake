@@ -1,16 +1,23 @@
 class ApplicationController < ActionController::Base
 
-before_action :configure_permitted_parameters, if: :devise_controller?
-
-protected
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [ :first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :phone_number, :address, :email])
 
 
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :phone_number, :address, :email])
+  private
 
-    return unless customer_signed_in? && @current_customer.is_deleted?
-    sign_out
-    redirect_to root_path
+  def after_sign_in_path_for(resource_or_scope)
+    if resource_or_scope.is_a?(Admin)
+      admins_path
+    else
+      root_path
+    end
   end
+
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :admin_admin
+
+    else
+      new_admin_session_path
+    end
+  end
+
 end
