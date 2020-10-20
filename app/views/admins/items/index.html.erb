@@ -1,0 +1,20 @@
+<%= render 'layouts/admin_header' %>
+    <h2>商品一覧</h2>
+    <table>
+      <thead>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg' %></td>
+          <td><%= item.name %></td>
+          <td><%= item.introduction %></td>
+          <td><%= item.price %></td>
+          <td><%= link_to "show", admins_item_path(item), class: "btn btn-primary" %></td>
+          <td><%= link_to "削除する", admins_item_path(item), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+     </table>
+        <%= link_to "新規投稿", new_admins_item_path, class: "btn btn-primary" %>
+        <!--ここの新規登録ボタンはできれば手本のような丸いボタンにしたい-->

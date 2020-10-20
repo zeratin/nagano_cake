@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   has_many :item_genres, dependent: :destroy
   has_many :genres, through: :item_genres
   scope :regexp_days, -> (pattern){ where("items.days REGEXP ?", pattern) }
+  attachment :image
 
   def self.search(params)
 
@@ -16,5 +17,7 @@ class Item < ApplicationRecord
     items
   end
 
-  belongs_to :genre
+  belongs_to :genre, optional: true
+  # ジャンル情報なしで情報を仮登録するためにoptional: trueの記述をしました。必要なくなれば消していいです。
+  # 参考記事です。https://qiita.com/tanaka7014/items/50a1a953b3f440cbe481
 end

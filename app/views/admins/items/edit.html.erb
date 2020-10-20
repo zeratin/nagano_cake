@@ -1,0 +1,44 @@
+<%= render 'layouts/admin_header' %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+      <h2>商品編集</h2>
+      <%= form_with model: @item, url: admins_item_path(@item), local:true do |f| %>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">画像</label>
+          <div class="col-xs-6">
+            <%= f.attachment_field :image %>
+          </div>
+          <div class="col-xs-2"></div>
+        <div class="form-group">
+          <label class="col-xs-4 control-label">商品名</label>
+          <div class="col-xs-6">
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="col-xs-2"></div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-4 control-label">商品説明</label>
+          <div class="col-xs-8">
+            <%= f.text_area :introduction, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-4 control-label">税抜価格</label>
+          <div class="col-xs-6">
+            <%= f.text_field :price, class: 'form-control' %>
+          </div>
+          <div class="col-xs-2"></div>
+        </div>
+
+        <div class="address-update-btn col-xs-12">
+          <%= f.submit '編集する', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+
+    </div>
+    <div class="col-xs-1"></div>
+  </div>
+</div

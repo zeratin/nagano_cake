@@ -1,0 +1,11 @@
+<%= render 'layouts/admin_header' %>
+<h2>タイトル</h2>
+<p><%= @item.name %></p>
+<h2>本文</h2>
+<p><%= @item.introduction %></p>
+<h2>税抜価格</h2>
+<p><%= @item.price %></p>
+<h2>画像</h2>
+<%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %>
+
+<%= link_to "編集", edit_admins_item_path(@item), class: "btn btn-primary" %>

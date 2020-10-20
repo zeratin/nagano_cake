@@ -24,6 +24,18 @@
   box-sizing: border-box;
 }
 
+.back-image {
+    background-image: url(back3.jpg);
+    width: 100%;
+    height: 100%;
+    // 全体を覆うサイズにする
+    background-size: cover;
+    // 画像を繰り返し表示しない
+    background-repeat: no-repeat;
+    // 画像の位置を固定する
+    background-attachment: fixed;
+}
+
 .navbar-text {
     width: 45%;
     margin: 10 auto;
@@ -36,7 +48,7 @@
     height: 400px;
     background-size: cover;
     background-size: center;
-    background-image: url( chocolate_cake.jpg);
+    background-image: url(chocolate_cake.jpg);
     position: relative;
 }
 
@@ -80,6 +92,10 @@
     padding: 5px;
 }
 
+.footer-text {
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
 
 
 footer {
