@@ -8,7 +8,7 @@
 		</div>
 		<div class="navbar-guest-name">
 			<% if customer_signed_in? %>
-			  <p class="navbar-text">ようこそcustomer_nameさん</p>
+			  <p class="navbar-text">ようこそ<%= current_customer.first_name %>さん</p>
 			<% else %>
 		      <p class="navbar-text">ようこそゲストさん</p>
 		    <% end %>
@@ -25,12 +25,7 @@
 				<li><%= link_to 'About', home_about_path %></li>
 				<li><%= link_to '商品一覧', items_path %></li>
 				<li><%= link_to '新規登録', new_customer_registration_path %></li>
-<<<<<<< HEAD
-				<li><%= link_to 'ログイン', root_path %></li>
-=======
 				<li><%= link_to 'ログイン', new_customer_session_path %></li>
->>>>>>> 7759046e1d5e31b1326a64b7ae85a6591bad8f5b
-				<!--新規とログインのパスがまだわからないのでtopのリンクになってます-->
 			  <% end %>
 			</ul>
 

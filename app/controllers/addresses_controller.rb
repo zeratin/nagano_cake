@@ -1,5 +1,4 @@
 class AddressesController < ApplicationController
-<<<<<<< HEAD
 
   def index
     @address = Address.new
@@ -44,5 +43,3 @@ class AddressesController < ApplicationController
   end
 
 end
-=======
->>>>>>> 7759046e1d5e31b1326a64b7ae85a6591bad8f5b
