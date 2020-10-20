@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+
   # 以下管理者側設定
   devise_for :admins, controllers:{
     sessions:'admins/sessions',
     registrations:'admins/registrations',
     passwords:'admins/passwords'
   }
+
 
   namespace :admins do
     get 'homes/top'
@@ -32,6 +34,9 @@ Rails.application.routes.draw do
       registrations:'customers/registrations',
       passwords:'customers/passwords'
     }
+  end
+
+
   end
 
 end

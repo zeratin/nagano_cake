@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_093323) do
+
+ActiveRecord::Schema.define(version: 2020_10_20_051636) do
+
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -68,15 +70,6 @@ ActiveRecord::Schema.define(version: 2020_10_17_093323) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "item_genres", force: :cascade do |t|
-    t.bigint "item_id"
-    t.bigint "genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_item_genres_on_genre_id"
-    t.index ["item_id"], name: "index_item_genres_on_item_id"
-  end
-
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "introduction"
@@ -86,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_10_17_093323) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "genre_id"
+    t.integer "tax_included_price"
   end
 
   create_table "order_details", force: :cascade do |t|
