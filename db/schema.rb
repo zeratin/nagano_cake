@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_065046) do
+ActiveRecord::Schema.define(version: 2020_10_20_024509) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 2020_10_19_065046) do
     t.integer "customer_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -50,13 +58,13 @@ ActiveRecord::Schema.define(version: 2020_10_19_065046) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "first_name_kana"
     t.string "last_name_kana"
     t.string "phone_number"
     t.string "address"
     t.string "postal_code"
-    t.string "first_name"
-    t.string "last_name"
     t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
@@ -69,6 +77,14 @@ ActiveRecord::Schema.define(version: 2020_10_19_065046) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "item_genres", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_item_genres_on_genre_id"
+    t.index ["item_id"], name: "index_item_genres_on_item_id"
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "name"

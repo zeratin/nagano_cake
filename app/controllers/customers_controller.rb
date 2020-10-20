@@ -8,13 +8,6 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
-  def unsubscribe
-  end
-  
-  def withdraw
-    
-  end
-
   def update
      @customer = Customer.find(params[:id])
      if @customer.update(customer_params)
@@ -22,10 +15,6 @@ class CustomersController < ApplicationController
      else
        render 'edit'
      end
-     if @is_deleted.update(customer_params)
-       
-       redirect_to root_path
-     end 
   end
 
   def unsubscribe
