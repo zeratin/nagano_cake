@@ -1,46 +1,55 @@
 class Admins::ItemsController < ApplicationController
-  before_action :set_genres, only:[:new, :create, :index, :edit, :update]
-
-  def new
-    @item = Item.new
-  end
-
-  def create
-   @item = Item.new(item_params)
-    if @item.save
-     flash[:notice] = "新商品を登録しました"
-     redirect_to adin_item_path(@item)
-    else
-      render :new
-    end
-  end
 
   def index
+    # binding.pry
     @items = Item.all.page(params[:page]).per(10)
+    @item = Item.new
+    # @genre = Genre.new
   end
 
   def show
     @item = Item.find(params[:id])
+    @tax_included_price = @item.price * 1.1
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to admins_items_path
+    end
+  end
+
+  def new
+    @item = Item.new
+    @genres = Genre.all
+  end
+
+
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to admins_items_path
+    end
+  end
+
+
   def update
-    @item = Item.update(item_params)
-    if flash[:notice] = "商品内容を変更しました"
-      redirect_to admin_item_path(@item)
-    else
-      render :edit
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to admins_items_path
     end
   end
 
   private
-  def item_params
-    params.require(:item).permit(:name, :image, :introduction, :genre_id, :tax_included_price, :is_active)
-  end
+    def item_params
+      params.require(:item).permit(:name, :introduction, :price, :image)
+    end
 
-  def set_genres
-    @genres = Genre.where(is_active: true)
-  end
+    # def item_info
+    #   item_params.merge(@item.tax_calculation)
+    # end
 end

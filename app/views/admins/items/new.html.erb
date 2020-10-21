@@ -31,11 +31,11 @@
             </div>
             <div class="form_group">
               <%= f.label :"ジャンル" %>
-              <%= f.collection_select :genre_id, @genres, {prompt: "--選択してください--"}, {class: "genre_id"} %>
+              <%= f.select :genre_id, Genre.all.collect { |p| [ p.name, p.id ] }, {prompt: "--選択してください--"}, {class: "genre_id"} %>
             </div>
             <div class="form_group">
               <%= f.label :"税抜価格" %>
-              <%= text_field :price %>円
+              <%= f.text_field :price %>円
             </div>
             <div class="form_group">
               <%= f.label :"販売ステータス" %>
@@ -50,3 +50,4 @@
     </div>
   </div>
 </div>
+

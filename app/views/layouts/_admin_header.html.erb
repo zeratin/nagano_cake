@@ -11,12 +11,12 @@
           <% if admin_signed_in? %>
             <li><%= link_to "商品一覧", admins_items_path %></li>
             <li><%= link_to "会員一覧", admins_customers_path %></li>
-            <li><%= link_to"注文履歴一覧", admins_orders_path %></li>
+            <li><%= link_to"注文履歴一覧", new_admin_session_path %></li>
             <li><%= link_to"ジャンル一覧", admins_genres_path %></li>
             <li><%= link_to"ログアウト", destroy_admin_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "About", new_admin_session_path %></li><!--パス暫定-->
-            <li><%= link_to "商品一覧", items_path %></li>
+            <li><%= link_to "About", home_about_path %></li>
+            <li><%= link_to "商品一覧", admins_items_path %></li>
             <li><%= link_to"新規登録", new_customer_registration_path %></li>
             <li><%= link_to"ログイン", new_customer_session_path %></li>
           <% end %>
