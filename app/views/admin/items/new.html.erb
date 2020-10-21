@@ -17,7 +17,29 @@
   	    </div>
       </div>
       <div class="col-xs-6">
-        <%= render "form_product", f: f %>
+       <table>
+          <div class="form_group">
+            <%= f.label :"商品名" %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="form_group">
+            <%= f.label :"商品説明" %>
+            <%= f.text_area :introduction %>
+          </div>
+          <div class="form_group">
+            <%= f.label :"ジャンル" %>
+            <%= f.collection_select(:genre_
+            id, @genres, :id, :name, prompt: "--選択してください--"), class: "genre_id" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :"税抜価格" %>
+            <%= text_field :price %>円
+          </div>
+          <div class="form_group">
+            <%= f.label :"販売ステータス" %>
+            <%= f.select :is_active, [["販売中",true],["販売停止中",false]], prompt: "--選択してください--", class: "is_active" %>
+          </div>
+        </table>
         <div class="actions col-xs-7">
   	      <%= f.submit "新規登録", class: "btn btn-primary btn-lg pull-right" %>
         </div>
