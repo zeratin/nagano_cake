@@ -1,7 +1,5 @@
-class Admin::ItemsController < ApplicationController
-
-  before_action :set_items, only[:show, :edit, :update]
-  before_action :set_genres, only[:new, :eidit, :index, :create, :update]
+class Admins::ItemsController < ApplicationController
+  before_action :set_genres, only:[:new, :create, :index, :edit, :update]
 
   def new
     @item = Item.new
@@ -18,15 +16,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-   @items = Item.all.page(params[:page]).per(10)
-
-
-
-
-
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -35,18 +29,15 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.update(item_params)
     if flash[:notice] = "商品内容を変更しました"
-        redirect_to admin_item_path(@item)
+      redirect_to admin_item_path(@item)
     else
-        render :edit
+      render :edit
     end
-
   end
 
   private
-
   def item_params
-    params.require(:item).permit(:name, :image, :introduction,
-       :genre_id, :tax_included_price, :is_active)
+    params.require(:item).permit(:name, :image, :introduction, :genre_id, :tax_included_price, :is_active)
   end
 
   def set_genres

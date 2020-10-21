@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # 以下管理者側設定
   devise_for :admins, controllers:{
     sessions:'admins/sessions',
@@ -7,13 +6,14 @@ Rails.application.routes.draw do
     passwords:'admins/passwords'
   }
 
-
   namespace :admins do
     get 'homes/top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :show, :edit, :update]
     resources :orders, only: [:index, :show]
     patch 'orders/:id' => 'orders#status_update'
+    resources :items, only: [:index, :show, :edit, :new]
+    # get 'items/new'
   end
   # 管理者側設定ここまで
 
@@ -36,9 +36,6 @@ Rails.application.routes.draw do
       registrations:'customers/registrations',
       passwords:'customers/passwords'
     }
-  end
-
-
   end
 
 end
