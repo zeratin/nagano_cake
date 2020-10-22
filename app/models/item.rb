@@ -1,6 +1,5 @@
 class Item < ApplicationRecord
-  has_many :item_genres, dependent: :destroy
-  has_many :genres, through: :item_genres
+  belongs_to :genre
 
   def save_genres(genre_ids)
     genre_ids.each do |genre_id|

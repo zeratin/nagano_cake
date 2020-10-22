@@ -1,9 +1,6 @@
-class Genre <
-  has_many :item_genres, dependent: :destroy
-  has_many :items, through: :item_genres
-  validates :name, presence: true
+class Genre < ApplicationRecord
 
-  has_many :items
-  varidates :name, presence: true
+  has_many :items, dependent: :destroy
+  validates :name, presence: true
 
 end
