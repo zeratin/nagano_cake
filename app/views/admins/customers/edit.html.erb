@@ -4,7 +4,7 @@
   <div class="row">
     <h3><%= "#{@customer.last_name}#{@customer.first_name}" %>さんの会員情報編集</h3>
     <div class="col-xs-9">
-      <%= form_with model:@customer, url: admins_customer_path, method: 'patch', local:true do |f| %>
+      <%= form_with model: @customer, url: admins_customer_path, method: 'patch', local: true do |f| %>
         <table class="table">
           <tr>
             <td>顧客ID</td>
