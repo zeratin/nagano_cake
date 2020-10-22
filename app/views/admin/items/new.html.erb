@@ -2,6 +2,7 @@
   <div class="col-xs-12">
     <h2 class="head-line title_h2 text-center">商品新規登録</h2>
     <%= form_with model:@item, url: admin_items_path, method: :post, class: "form-horizontal"), local:true do |f| %>
+
       <% if resource.errors.any? %>
         <div id="error_explanation">
           <ul>
