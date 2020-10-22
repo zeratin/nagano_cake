@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resources :addresses
-  resources :genres, only: [:index, :create, :show, :edit, :update]
+  resources :genres, only: [:index, :create, :show, :edit, :update] do
+    get 'genres/get' => 'items#index'
+  end
   post 'addresses/create' => 'addresses#index'
   patch 'addresses/update' => 'addresses#index'
   resources :customers, only: [:index, :show, :edit, :update, :unsubscribe, :withdraw] do
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
     passwords:'admins/passwords'
   }
   namespace :admins do
-    get 'homes/top'
+    get '/' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :show, :edit, :update]
   end
