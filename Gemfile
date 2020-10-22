@@ -64,10 +64,17 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
+
 gem 'jquery-rails'
 gem 'rspec-rails'
 gem 'bootstrap-sass', '~>3.3.6'
 gem 'kaminari','~> 1.2.1'
 gem 'pry-rails'
+
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+
+# 画像投稿をするにはrefileのアップデートが必要だった。以下のコマンドで解決
+# $ rake secret //シークレットキーを表示してapplication_controller_renderer.rbに貼り付け
+# $ brew upgrade　　　　    //brewをアップデート
+# $ brew install imagemagick    //imagemagickのモジュールをMacにインストール
