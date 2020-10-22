@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
     @address = Address.new
     @addresses = Address.all
   end
-  
+
 
   def show
   end
@@ -25,9 +25,9 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
     if @address.destroy
       redirect_to addresses_path
-    end 
+    end
   end
-  
+
   def update
     @address = Address.find(params[:id])
     if @address.update(address_params)

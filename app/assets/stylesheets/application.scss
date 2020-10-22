@@ -24,6 +24,13 @@
   box-sizing: border-box;
 }
 
+
+main {
+    padding-bottom: 50px;
+
+}
+
+
 .back-image {
     background-image: url(back3.jpg);
     width: 100%;
@@ -67,17 +74,88 @@
 }
 
 
+.recommended-item {
+    display: inline-block;
+    display: flex;
+    text-align: center;
+}
+
+.box1 .box2 .box3 .box4 {
+    width: 200px;
+    height: 200px;
+
+}
+
+.box1-img {
+    background-image: url(cheese.jpg);
+    width: 180px;
+    height: 120px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-size: cover;
+    background-size: center;
+}
+
+.box2-img {
+    background-image: url(macaron.jpg);
+    width: 180px;
+    height: 120px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-size: cover;
+    background-size: center;
+}
+
+.box3-img {
+    background-image: url(pudding.jpg);
+    width: 180px;
+    height: 120px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-size: cover;
+    background-size: center;
+}
+
+.box4-img {
+    background-image: url(mizore.jpg);
+    width: 180px;
+    height: 120px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-size: cover;
+    background-size: center;
+}
+
+
 
 .about-text {
     text-align: center;
+    margin-bottom: 20px;
 }
 .about-image {
-    width: 70%;
+    width: 600px;
     height: 400px;
     background-image: url(tarte.jpg);
     background-size: cover;
     background-position: center;
     margin: auto;
+}
+.item-index {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.items-list {
+    width: 200px;
+    height: 200px;
+}
+
+.item-show {
+    padding-top: 30px;
+}
+
+.item-amount {
+    margin-top: 80px;
 }
 
 
@@ -90,6 +168,23 @@
 }
 .col-xs-8 {
     padding: 5px;
+}
+
+
+
+
+.withdrawal-text {
+    text-align: center;
+}
+
+.withdrawal-btn {
+    margin-top: 30px;
+    text-align: center;
+    padding-right: 20px;
+}
+
+.btn-space {
+    margin-right: 10px;
 }
 
 .footer-text {

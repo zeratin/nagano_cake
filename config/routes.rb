@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
-  resources :carts
+
+  resources :cart_items, only: [:index, :create]
+  post '/cart_items' => 'cart_items#index'
+
   resources :orders
   resources :addresses
   post 'addresses/create' => 'addresses#index'
