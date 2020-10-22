@@ -1,10 +1,9 @@
 class Admins::ItemsController < ApplicationController
 
   def index
-    # binding.pry
     @items = Item.all.page(params[:page]).per(10)
     @item = Item.new
-    # @genre = Genre.new
+    @genre = Genre.new
   end
 
   def show
@@ -25,7 +24,6 @@ class Admins::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @genres = Genre.all
   end
 
 
@@ -46,7 +44,7 @@ class Admins::ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:name, :introduction, :price, :image)
+      params.require(:item).permit(:name, :introduction, :price, :image, :genre_id)
     end
 
     # def item_info

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   scope module: 'customers' do
     devise_for :customers, controllers:{
       sessions:'customers/sessions',
@@ -13,13 +12,14 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
-  resources :carts
+  resources :carts, only: [:index, :create, :update, :destroy]
+  delete 'carts/destroy_all' => 'carts#destroy_all'
   resources :orders
   resources :addresses
   post 'addresses/create' => 'addresses#index'
   patch 'addresses/update' => 'addresses#index'
 
-  resources :items, only: [:index,:show]
+  resources :items, only: [:index, :show]
 
   resources :customers, only: [:index, :show, :edit, :update, :unsubscribe, :withdraw] do
     get 'unsubscribe' => 'customers#unsubscribe'
