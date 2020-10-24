@@ -1,22 +1,27 @@
 class ItemsController < ApplicationController
 
 def index
-  @items = Item.all
   @genres = Genre.all
-  # if params[:genre_id]
-  #   @genre = Genre.find(params[:genre_id])
-  #   @items = @genre.items
-  # else
-  #   @items = Item.all
+  @genre = @genres.find_by(id: params[:search])
+  unless @genre.nil?
+    @items = Item.where(genre_id: @genre.id)
+  else
+    @items = Item.all
+  end
+  # @genre = params["search"]["genre"]
+  # if @genre == 1.to_s
+  #   @items = Item.where(genre: "1.to_s")
+  # elsif @genre == 2.to_s
+  #   @items = Item.where(genre: "2.to_s")
   # end
 end
 
 def show
-  @item = Item.find_by(id: params[:id])
   @genres = Genre.all
+  @item = Item.new
+  @item = Item.find(params[:id])
 end
 
-def edit
-end
+
 
 end

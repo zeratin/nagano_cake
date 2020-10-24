@@ -1,0 +1,46 @@
+<%= render 'layouts/admin_header' %>
+<div class="container">
+  <div class="row">
+    <h3>商品一覧</h3>
+    <%= link_to "新規商品登録", new_admins_item_path, class:"btn btn-warning pull-right" %>
+    <!--ここの新規登録ボタンはできれば手本のような丸いボタンにしたい-->
+    <div class="col-xs-9">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td>
+                <%= link_to admins_item_path(item), class:"btn-link" do %>
+                  <%= item.name %>
+                <% end %>
+              </td>
+              <td><%= item.price.to_s(:delimited) %></td>
+              <td><%= item.genre.name %></td>
+              <td>
+                <% if item.is_active == true %>
+                  販売中
+                <% elsif item.is_active == false %>
+                  販売停止中
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "削除する", admins_item_path(item), method: :delete, class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="text_center"><%= paginate(@items) %></div>
+    </div>
+  </div>
+</div>

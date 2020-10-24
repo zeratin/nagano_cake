@@ -10,14 +10,16 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   get 'home/about' => 'homes#about'
+
   resources :carts
   resources :orders
   resources :addresses
-  resources :genres, only: [:index, :create, :show, :edit, :update] do
-    get 'genres/get' => 'items#index'
-  end
+  resources :genres, only: [:index, :create, :show, :edit, :update]
   post 'addresses/create' => 'addresses#index'
   patch 'addresses/update' => 'addresses#index'
+
+  resources :items, only: [:index,:show]
+
   resources :customers, only: [:index, :show, :edit, :update, :unsubscribe, :withdraw] do
     get 'unsubscribe' => 'customers#unsubscribe'
     patch 'withdraw' => 'customers#withdraw'
@@ -34,8 +36,10 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :show, :edit, :update]
+    resources :items,only: [:index,:new,:create,:show,:edit,:update]
+    resources :orders, only: [:index, :show]
+    patch 'orders/:id' => 'orders#status_update'
   end
-  resources :items,only: [:index,:new,:create,:show,:edit,:update]
   get 'top'=>'items#top'
   resources :orders,only: [:index,:show,:update] do
     member do

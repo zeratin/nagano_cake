@@ -1,4 +1,3 @@
-<% genres.each do |genre| %>
-  <%= link_to "#{genre.name}", items_path %>
+<% @genres.each do |genre| %>
+  <%= link_to "#{genre.name}", items_path(search: genre.id) %>
 <% end %>
-

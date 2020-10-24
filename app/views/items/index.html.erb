@@ -1,3 +1,4 @@
+<%= render 'layouts/header' %>
 <div class="container">
   <div class="row">
 
@@ -6,25 +7,25 @@
     </div>
 
     <div class="col-xs-9">
-        <h2>商品一覧</h2>
-          <table>
-            <thead>
-            </thead>
-              <tbody>
-                <% @items.each do |item| %>
-                <tr>
-                  <td><%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg' %></td>
-                  <td><%= item.name %></td>
-                  <td><%= item.introduction %></td>
-                  <td><%= item.price %></td>
-                  <td><%= link_to "show", admins_item_path(item), class: "btn btn-primary" %></td>
-                  <td><%= link_to "削除する", admins_item_path(item), method: :delete, class: "btn btn-danger" %></td>
-                </tr>
-                <% end %>
+
+        <% @items.each do |item| %>
+        <tr>
+          <td>
+            <%= link_to item_path(item) do %>
+              <%= attachment_image_tag item, :image_id, :fill, 180, 120, format: 'jpeg' %><br>
+              <%= item.name %><br>
+            <% end %>
+          </td>
+          <td> ¥<%= item.price %><br></td>
+        <% end %>
+
+                </div>
             </tbody>
            </table>
-
     </div>
 
   </div>
-</div>
+  </div>
+
+  <!--見本-->
+
