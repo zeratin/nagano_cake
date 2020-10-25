@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     }
   end
 
-
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
@@ -34,17 +33,15 @@ Rails.application.routes.draw do
     passwords:'admins/passwords'
   }
 
-
   namespace :admins do
     get '/' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :show, :edit, :update]
     resources :items, only: [:create, :new, :edit, :update, :show, :index, :destroy ]
     resources :orders, only: [:index, :show]
+    resources :order_details, only: [:update]
     patch 'orders/:id' => 'orders#status_update'
   end
-
-
 
   resources :orders, only: [:index,:show,:update] do
     member do

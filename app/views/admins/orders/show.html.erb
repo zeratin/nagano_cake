@@ -1,8 +1,8 @@
 <%= render 'layouts/admin_header' %>
 
 <div class="container">
+  <h3>注文履歴詳細</h3>
   <div class="row">
-    <h3>注文履歴詳細</h3>
     <div class="col-xs-6">
       <table class="table">
         <tr>
@@ -22,13 +22,17 @@
         <tr>
           <td>注文ステータス</td>
           <td>
-            <%= form_with model: @order, url: admins_order_path, local:true do |f| %>
+            <%= form_with model: @order, url: admins_order_path(@order), local:true do |f| %>
               <%= f.select :status, [["入金待ち", "入金待ち"], ["入金確認", "入金確認"], ["製作中", "製作中"], ["発送準備中", "発送準備中"], ["発送済み", "発送済み"]] %>
               <%= f.submit "更新", class: 'btn btn-primary' %>
             <% end %>
           </td>
         </tr>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
       <table class="table">
         <thead>
           <tr>
@@ -40,19 +44,28 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-              <td><%= @order.id %></td>
+          <% @order.order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
               <td>
-                <%= @order.customer.last_name %><%= @order.customer.first_name %>
+                <% tax_included_price = order_detail.item.price*1.1 %>
+                <%= tax_included_price.round(0).to_s(:delimited) %>
               </td>
-              <td><%= @order.customer.email %></td>
+              <td><%= order_detail.amount %></td>
               <td>
-
+                <% tax_included_price = tax_included_price.round(0) %>
+                <%= (tax_included_price*order_detail.amount).to_s(:delimited) %>
               </td>
-          </tr>
+              <td>
+                <%= form_with model: order_detail, url: admins_order_detail_path(order_detail), method: :patch, local:true do |f| %>
+                  <%= f.select :making_status, [["製作不可", "製作不可"], ["製作待ち", "製作待ち"], ["製作中", "製作中"], ["製作完了", "製作完了"]] %>
+                  <%= f.submit "更新", class: 'btn btn-primary' %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
   </div>
-
 </div>

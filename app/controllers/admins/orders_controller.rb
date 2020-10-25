@@ -6,10 +6,7 @@ class Admins::OrdersController < ApplicationController
   end
 
   def show
-    # @orders = Order.all
     @order = Order.find(params[:id])
-    # binding.pry
-    @order_details
   end
 
   def status_update

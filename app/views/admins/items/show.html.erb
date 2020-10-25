@@ -1,40 +1,42 @@
 <%= render 'layouts/admin_header' %>
 
 <div class="container">
-  <h3 class="head-line title_h2 text-center">商品詳細</h3>
-
-  <div class="image_field">
-    <%= attachment_image_tag(@item, :image_id, :fill, 50, 50, fallback: "no_image.jpg") %>
+  <h3>商品詳細</h3>
+  <div class="row">
+    <div class="col-xs-6">
+      <%= attachment_image_tag(@item, :image, :fill, 150, 150, fallback: "no_image.jpg") %>
+    </div>
+    <div class="col-xs-6">
+    <table>
+      <tr>
+        <td>商品名</td>
+        <td><%= @item.name %></td>
+      </tr>
+      <tr>
+        <td>商品説明</td>
+        <td><%= @item.introduction %></td>
+      </tr>
+      <tr>
+        <td>ジャンル</td>
+        <td><%= @item.genre.name %></td>
+      </tr>
+      <tr>
+        <td>税込価格(税抜価格)</td>
+        <td><%= @tax_included_price.round(0).to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</td>
+      </tr>
+      <tr>
+        <td>販売ステータス</td>
+        <td>
+          <% if @item.is_active == true %>
+            販売中
+          <% elsif @item.is_active == false %>
+            販売停止中
+          <% end %>
+        </td>
+      </tr>
+    </table>
+    </div>
   </div>
-
-  <table>
-    <tr>
-      <td>商品名</td>
-      <td><%= @item.name %></td>
-    </tr>
-    <tr>
-      <td>商品説明</td>
-      <td><%= @item.introduction %></td>
-    </tr>
-    <tr>
-      <td>ジャンル</td>
-      <td><%= @item.genre.name %></td>
-    </tr>
-    <tr>
-      <td>税込価格(税抜価格)</td>
-      <td><%= @tax_included_price.round(0).to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</td>
-    </tr>
-    <tr>
-      <td>販売ステータス</td>
-      <td>
-        <% if @item.is_active == true %>
-          販売中
-        <% elsif @item.is_active == false %>
-          販売停止中
-        <% end %>
-      </td>
-    </tr>
-  </table>
   <div class="action">
     <%= link_to "編集する", edit_admins_item_path(@item), class: "btn btn-primary" %>
   </div>

@@ -14,10 +14,8 @@
             </ul>
           </div>
         <% end %>
-        <div class="col-xs-4 col-xs-offset-1">
-          <div class="img_field">
-
-          </div>
+        <div class="col-xs-6">
+          <%= f.attachment_field :image %>
         </div>
         <div class="col-xs-6">
           <table>
@@ -39,7 +37,7 @@
             </div>
             <div class="form_group">
               <%= f.label :"販売ステータス" %>
-              <%= f.select :is_active, [["販売中",true],["販売停止中",false]], prompt: "--選択してください--", class: "is_active" %>
+              <%= f.select :is_active, [["販売中",true],["販売停止中",false]], include_blank: "--選択してください--" %>
             </div>
           </table>
           <div class="actions col-xs-7">

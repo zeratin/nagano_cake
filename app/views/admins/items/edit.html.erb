@@ -1,38 +1,40 @@
 <%= render 'layouts/admin_header' %>
 
 <div class="container">
-  <h3 class="head-line title_h2 text-center">商品編集</h3>
-  <%= form_with model: @item, url: admins_items_path, method: 'get', local: true do |f| %>
-    <div class="img_field">
-      <%= attachment_image_tag(@item, :image, size: "200×160") %>
-    </div>
-    <div class="form_group">
-      <%= f.attachment_field :image %>
-    </div>
-    <table>
-      <div class="form_group">
-        <%= f.label :"商品名" %>
-        <%= f.text_field :name %>
+  <h3>商品編集</h3>
+  <div class="row">
+    <%= form_with model: @item, url: admins_item_path, method: 'patch', local: true do |f| %>
+      <div class="col-xs-6">
+        <%= attachment_image_tag @item, :image, :fill, 150, 150, fallback: "no_image.jpg" %>
+        <%= f.attachment_field :image %>
       </div>
-      <div class="form_group">
-        <%= f.label :"商品説明" %>
-        <%= f.text_area :introduction %>
+      <div class="col-xs-6">
+        <table>
+          <div class="form_group">
+            <%= f.label :"商品名" %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="form_group">
+            <%= f.label :"商品説明" %>
+            <%= f.text_area :introduction %>
+          </div>
+          <div class="form_group">
+            <%= f.label :"ジャンル" %>
+            <%= f.collection_select :genre_id, Genre.where(is_active: true), :id, :name, include_blank: "--選択してください--" %>
+          </div>
+          <div class="form_group">
+            <%= f.label :"税抜価格" %>
+            <%= f.text_field :price %>円
+          </div>
+          <div class="form_group">
+            <%= f.label :"販売ステータス" %>
+            <%= f.select :is_active, [["販売中",true],["販売停止中",false]], prompt: "--選択してください--", class: "is_active" %>
+          </div>
+        </table>
       </div>
-      <div class="form_group">
-        <%= f.label :"ジャンル" %>
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
+      <div class="actions">
+       <%= f.submit "変更を保存", class: "btn btn-primary pull-right" %>
       </div>
-      <div class="form_group">
-        <%= f.label :"税抜価格" %>
-        <%= f.text_field :price %>円
-      </div>
-      <div class="form_group">
-        <%= f.label :"販売ステータス" %>
-        <%= f.select :is_active, [["販売中",true],["販売停止中",false]], prompt: "--選択してください--", class: "is_active" %>
-      </div>
-    </table>
-    <div class="actions">
-     <%= f.submit "変更を保存", class: "btn btn-primary pull-right" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

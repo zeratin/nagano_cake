@@ -3,7 +3,8 @@ class Item < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   has_many :item_genres, dependent: :destroy
-  has_many :genres, through: :item_genres
+  has_many :order_details, dependent: :destroy
+
   scope :regexp_days, -> (pattern){ where("items.days REGEXP ?", pattern) }
   attachment :image
 
