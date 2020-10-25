@@ -1,17 +1,3 @@
-<table class="table">
-  <thead>ジャンル検索</thead>
-  <tr>
-    <th>ケーキ</th>
-  </tr>
-  <tr>
-    <th>焼き菓子</th>
-  </tr>
-  <tr>
-    <th>プリン</th>
-  </tr>
-  <tr>
-    <th>キャンディ</th>
-  </tr>
-</table>
-
-<!--ジャンル検索テンプレート-->
+<% @genres.each do |genre| %>
+  <%= link_to "#{genre.name}", items_path(search: genre.id) %>
+<% end %>

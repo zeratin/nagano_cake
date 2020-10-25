@@ -1,0 +1,37 @@
+<h2 class="head-line title_h2 text_center adin_item_index">商品一覧</h2>
+<%= link_to new_admin_item_path, class="btn btn-warning pull-right new_item" do %>
+新規商品登録
+<% end %>
+
+<table>
+  <thead>
+    <tr class="info">
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @items.each do |item| %>
+        <th><%= item.id %></th>
+        <th>
+          <%= link_to admin_items_path(item), "btn-link" do %>
+           <%= item.name %>
+          <% end %>
+        </th>
+        <th><%= item.price.to_s(:delimited) %></th>
+        <th><%= item.genre.name %></th>
+        <th><% if item.is_active == true %></th>
+              <p>販売中</p>
+            <% elseif item.is_active == false %>
+              <P>販売停止中</P>
+            <% end %>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<div class="text_center"><%= paginate(@item) %></div>
+

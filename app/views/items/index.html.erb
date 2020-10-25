@@ -3,13 +3,16 @@
   <div class="row">
 
     <div class="col-xs-3">
-        <%= render 'items/search' %>
+        <%= render 'items/search',  genres: @genres %>
     </div>
 
     <div class="col-xs-9">
+
+
+                </div>
+            </tbody>
+           </table>
         <h2>商品一覧</h2>
-
-
         <div class="item-index">
         <% @items.each do |item| %>
         <div class="items-list">
@@ -18,17 +21,11 @@
           <% end %>
           <%= item.name %><br>
           ¥<%= item.price %><br>
-          
           <!--priceは税込み表示しないといけないので修正必要-->
         </div>
         <% end %>
         </div>
-
-
-
-
-
     </div>
-
   </div>
-</div>
+  </div>
+

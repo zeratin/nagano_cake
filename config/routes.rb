@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   scope module: 'customers' do
     devise_for :customers, controllers:{
       sessions:'customers/sessions',
@@ -8,7 +7,6 @@ Rails.application.routes.draw do
       passwords:'customers/passwords'
     }
   end
-
 
   root 'homes#top'
   get 'home/about' => 'homes#about'
@@ -18,6 +16,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:index, :create, :destroy, :update]
 
   resources :addresses
+  resources :genres, only: [:index, :create, :show, :edit, :update]
   post 'addresses/create' => 'addresses#index'
   patch 'addresses/update' => 'addresses#index'
 
@@ -35,13 +34,13 @@ Rails.application.routes.draw do
     registrations:'admins/registrations',
     passwords:'admins/passwords'
   }
-
-
   namespace :admins do
     get '/' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :show, :edit, :update]
-    resources :items, only: [:create, :new, :edit, :update, :show, :index, :destroy ]
+    resources :items,only: [:index,:new,:create,:show,:edit,:update]
+    resources :orders, only: [:index, :show]
+    patch 'orders/:id' => 'orders#status_update'
   end
 
 
@@ -51,12 +50,11 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :update, :new, :create] do
     member do
       get :current_index
-      resource :order_details, only: [:update]
+      resource :order_details,only: [:update]
     end
     collection do
       get :today_order_index
     end
 
   end
-
 end

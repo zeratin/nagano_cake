@@ -3,7 +3,7 @@
   <div class="row">
 
     <div class="col-xs-3">
-        <%= render 'items/search' %>
+        <%= render 'items/search', genres: @genres %>
     </div>
 
     <div class="col-xs-9">
@@ -45,7 +45,6 @@
         <div class="text-right">
             <%= link_to "もっと見る", items_path, class: "btn" %>
         </div>
-
     </div>
   </div>
 </div>

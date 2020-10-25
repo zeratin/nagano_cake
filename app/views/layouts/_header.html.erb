@@ -4,11 +4,11 @@
 		<div class="navbar-header">
 		  <a class="logo">
 				<%= link_to 'ながのcake', root_path, class: 'navbar-brand' %>
-		  </a>
+			</a>
 		</div>
 		<div class="navbar-guest-name">
 			<% if customer_signed_in? %>
-			  <p class="navbar-text">ようこそ<%= current_customer.first_name %>さん</p>
+			  <p class="navbar-text">ようこそ<%= current_customer.full_name %>さん</p>
 			<% else %>
 		      <p class="navbar-text">ようこそゲストさん</p>
 		    <% end %>

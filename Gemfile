@@ -79,3 +79,4 @@ gem "refile-mini_magick"
 # $ brew upgrade　　　　    //brewをアップデート
 # $ brew install imagemagick    //imagemagickのモジュールをMacにインストール
 
+
