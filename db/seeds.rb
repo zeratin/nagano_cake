@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
  Admin.create(email: 'admin@mail', password: 'password')
- Customer.create(email: 'test@test', password: '000000', postal_code: '0000000', address: '大阪府大阪市東淀川区', telephon_number: '09000000000')
+ Customer.create(email: 'test@test', password: '000000', postal_code: '0000000', address: '大阪府大阪市東淀川区', phon_number: '09000000000')

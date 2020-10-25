@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
-  
+
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :create, :destroy, :update]
 
@@ -47,7 +47,8 @@ Rails.application.routes.draw do
 
   get 'orders/confirm' => 'orders#confirm'
   # 注文機能が進み次第confirmのメソッドをpostに変える
-  resources :orders, only: [:index, :show, :update, :new,] do
+  get 'orders/thanks' => 'orders#thanks'
+  resources :orders, only: [:index, :show, :update, :new, :create] do
     member do
       get :current_index
       resource :order_details, only: [:update]

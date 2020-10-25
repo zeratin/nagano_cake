@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_083508) do
     t.boolean "is_deleted", default: false
     t.string "postal_code"
     t.string "address"
-    t.string "telephon_number"
+    t.string "phon_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true

@@ -15,7 +15,6 @@
         <h2><%= @item.name %></h2>
         <h4><%= @item.introduction %></h4>
         <h2>¥<%= tax_included_price(@item.price) %></h2>
-
         <div class="item-amount">
           <%= form_with model: @cart_item, url:'/cart_items' do |f| %>
             <%= f.hidden_field :item_id, :value => @item.id %>
