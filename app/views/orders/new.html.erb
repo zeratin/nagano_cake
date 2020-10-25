@@ -1,26 +1,27 @@
 <h3>注文情報入力</h3>
 
 <div>
-  <%= form_with(model:@customer, local: true) do |form| %>
-    <%= form.radio_button :payment_method, 0 %>
-    <%= form.label :payment_method, "クレジットカード", {value: :male, style: "display: inline-block;"} %>
-    <%= form.radio_button :payment_method, 1 %>
-    <%= form.label :gender, "銀行振込", {value: :female, style: "display: inline-block;"} %>
+  <%= form_with(model: @customer, local: true) do |f| %>
+  <h5>支払方法</h5>
+    <%= f.radio_button :payment_method, 0 %>
+    <%= f.label :payment_method, "クレジットカード", {value: :male, style: "display: inline-block;"} %><br>
+
+    <%= f.radio_button :payment_method, 1 %>
+    <%= f.label :gender, "銀行振込", {value: :female, style: "display: inline-block;"} %>
 </div>
 
 <div>
-  <%= form.radio_button :address %>
-  <%= form.label :address, "ご自身の住所", {value: :male, style: "display: inline-block;"} %>
-  　<%= @customer.address %>
-  <%= form.radio_button :address %>
-  <%= form.label :address, "登録済住所から選択", {value: :female, style: "display: inline-block;"} %>
+  <h5>お届け先</h5>
+  <%= f.radio_button :address, current_customer %>
+  <%= f.label :address, "ご自身の住所", {value: :male, style: "display: inline-block;"} %>
+  <%= current_customer.address %><%= current_customer.full_name %><br>
+  <%= f.radio_button :address, current_customer %>
+  <%= f.label :address, "登録済住所から選択", {value: :female, style: "display: inline-block;"} %>
   　<div class="form_group">
-      <%= f.label :"" %>
-      <%= f.collection_select :customer_id, Address.all, :id, :name, include_blank: "--選択してください--" %>
+      <%= f.collection_select :customer_id, Address.all, :id, :address_name, include_blank: "--選択してください--" %>
     </div>
-  <!--選択フォームへ持ってくる部分がわからない-->
-  <%= form.radio_button :address %>
-  <%= form.label :address, "新しいお届け先", {value: :female, style: "display: inline-block;"} %>
+  <%= f.radio_button :address, current_customer %>
+  <%= f.label :address, "新しいお届け先", {value: :female, style: "display: inline-block;"} %><br>
   <tr>
     <th>郵便番号(ハイフンなし)</th>
     <th>
@@ -32,6 +33,8 @@
 		      </div>
       	</div>
     </th>
+  </tr>
+  <tr>
     <th>住所</th>
     <th>
       <form class="form-horizontal">
@@ -42,7 +45,8 @@
 	      	</div>
     	</div>
     </th>
-     <tr>
+  </tr>
+  <tr>
     <th>宛名</th>
     <th>
       <form class="form-horizontal">
@@ -53,12 +57,12 @@
 		      </div>
 	      </div>
 	  </th>
- </tr>
-
- <tr>
+  </tr>
+  <tr>
     <th>
       <%= f.submit '確認画面へ進む', class: 'btn btn-primary' %>
+      <!--パスがまだ-->
     </th>
- </tr>
+  </tr>
 <% end %>
 </div>

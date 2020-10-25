@@ -4,6 +4,14 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def full_name
+    self.first_name + self.last_name
+  end
+
+  def full_name_kana
+    self.first_name_kana + self.last_name_kana
+  end
+
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
