@@ -78,3 +78,4 @@ gem "refile-mini_magick"
 # $ rake secret //シークレットキーを表示してapplication_controller_renderer.rbに貼り付け
 # $ brew upgrade　　　　    //brewをアップデート
 # $ brew install imagemagick    //imagemagickのモジュールをMacにインストール
+

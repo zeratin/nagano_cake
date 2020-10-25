@@ -1,11 +1,5 @@
 class ApplicationController < ActionController::Base
-# helper_method :current_cart
 
-#   def current_cart
-#     if session[:cart_item_id]
-#       @cart_item = Cart_item.find(session[:cart_item_id])
-#     end
-#   end
 
   private
 
