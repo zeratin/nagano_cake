@@ -3,8 +3,11 @@
 <div class="container">
   <div class="row">
     <h3>商品一覧</h3>
-    <%= link_to "新規商品登録", new_admins_item_path, class:"btn btn-warning pull-right" %>
-    <!--ここの新規登録ボタンはできれば手本のような丸いボタンにしたい-->
+    <div class="col-xs-2 col-xs-offset-10">
+      <%= link_to new_admins_item_path do %>
+        <i class="fas fa-plus-circle fa-4x "></i>
+      <% end %>
+    </div>
     <div class="col-xs-12">
       <table class="table table-hover table-inverse">
         <thead>

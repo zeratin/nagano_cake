@@ -9,6 +9,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.boolean :is_active, default: "true"
       t.timestamp :created_at, default: "now"
       t.timestamp :updated_at, default: "now"
+    
+
       
       t.integer :genre_id
       

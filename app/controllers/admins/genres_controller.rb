@@ -17,12 +17,6 @@ class Admins::GenresController < ApplicationController
     end
   end
 
-  def show
-    @items = Item.all
-    @genre = Genre.find(params[:id])
-    @genres = @genre.items.order
-  end
-
   def edit
     @genre = Genre.find(params[:id])
   end
@@ -34,7 +28,6 @@ class Admins::GenresController < ApplicationController
       redirect_to admins_genres_path
       if @genre.is_active == true
         @genre.items.each do |item|
-          # item.is_sale = false
           item.save
         end
       end

@@ -7,6 +7,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :address
       t.timestamp :created_at, default: "now"
       t.timestamp :updated_at, default: "now"
+
       t.integer :customer_id
       
 

@@ -7,7 +7,6 @@ class CreateGenres < ActiveRecord::Migration[5.2]
       t.timestamp :updated_at, default: "now"
       
       
-
       t.timestamps
     end
   end

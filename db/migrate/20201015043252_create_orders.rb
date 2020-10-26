@@ -10,6 +10,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :total_payment
       t.timestamp :created_at, default: "now"
       t.timestamp :updated_at, default: "now"
+
       t.integer :customer_id
 
       t.timestamps

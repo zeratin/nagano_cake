@@ -70,9 +70,11 @@ gem 'rspec-rails'
 gem 'bootstrap-sass', '~>3.3.6'
 gem 'kaminari','~> 1.2.1'
 gem 'pry-rails'
+gem 'font-awesome-rails'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
 
 # 画像投稿をするにはrefileのアップデートが必要だった。以下のコマンドで解決
 # $ rake secret //シークレットキーを表示してapplication_controller_renderer.rbに貼り付け
