@@ -2,11 +2,27 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-1">
-      
+
     </div>
     <div class="col-xs-10">
-      
+      <h3>注文履歴一覧
+
+      <table>
+      <tbody>
+      <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.postal_code %></td>
+            <td><%= order.address %></td>
+            <td><%= order.name %></td>
+            <td><%= link_to "詳細", order_path(order), class: "btn btn-primary" %></td>
+            <td><%= link_to "削除", order_path(order), method: :delete, class: "btn btn-danger" %></td>
+          </tr>
+      <% end %>
+      </tbody>
+      </table>
     </div>
     <div class="col-xs-1">
-      
+
     </div>
+  </div>
+</div>

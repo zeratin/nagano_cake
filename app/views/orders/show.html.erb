@@ -1,4 +1,4 @@
-
+<%= render 'layouts/header' %>
 <div class="container">
   <div class="row">
     <div class="col-md-7">
@@ -16,7 +16,9 @@
 
           <tr>
             <th>配達先</th>
-            <th></th>
+            <th><%= @order.postal_code %></th>
+            <th><%= @order.address %></th>
+            <th><%= @order.full_name %></th>
             <!--配達先が入る-->
           </tr>
 

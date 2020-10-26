@@ -6,8 +6,11 @@
     </div>
 
     <div class="col-xs-10">
-
-
+      <%= form_with model: @order, url: '/orders', method: :post, local: true do |f| %>
+       <%= f.hidden_field :address, :value => @address.address %>
+       <%= f.hidden_field :postal_code, :value => @address.postal_code %>
+       <%= f.hidden_field :name, :value => @address.full_name %>
+       <%= f.hidden_field :payment_method, :value => @order.payment_method %>
 
      <table class="table table-bordered">
        <h2>注文情報確認</h2>
@@ -19,6 +22,7 @@
           <th>小計</th>
         </tr>
       </thead>
+
       <tbody>
         <% @cart_items.each do |cart_item| %>
           <tr>
@@ -30,12 +34,23 @@
         <% end %>
       </tbody>
     </table>
-    <h3>支払い方法</h3>
-    <h3>お届け先</h3>
-    <div class="thanks-btn">
-      <%= link_to "購入を確定する", orders_thanks_path, class: "btn btn-success btn-lg" %>
-    </div>
 
+    <div class="">
+      <h3>支払い方法</h3>
+      <div class="">
+        <%= @order.payment_method %>
+      </div>
+      <h3>お届け先</h3>
+      <div class="">
+        <%= @address.postal_code %>
+        <%= @address.address %>
+        <%= @address.full_name %>
+      </div>
+    </div>
+    <div class="thanks-btn">
+      <%= f.submit "購入を確定する", class: "btn btn-success btn-lg" %>
+    </div>
+    <% end %>
     </div>
 
     <div class="col-xs-1">
