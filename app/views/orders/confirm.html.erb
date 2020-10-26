@@ -1,0 +1,44 @@
+<%= render 'layouts/header' %>
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-1">
+    </div>
+
+    <div class="col-xs-10">
+
+
+
+     <table class="table table-bordered">
+       <h2>注文情報確認</h2>
+      <thead>
+        <tr class="active">
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td><%= cart_item.item.name %></td>
+            <td>¥<%= tax_included_price(cart_item.item.price) %></td>
+            <td><%= cart_item.amount %></td>
+            <td>¥<%= ((cart_item.item.price * 1.1).round * cart_item.amount).to_s(:delimited) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h3>支払い方法</h3>
+    <h3>お届け先</h3>
+    <div class="thanks-btn">
+      <%= link_to "購入を確定する", orders_thanks_path, class: "btn btn-success btn-lg" %>
+    </div>
+
+    </div>
+
+    <div class="col-xs-1">
+    </div>
+  </div>
+</div>

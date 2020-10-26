@@ -1,0 +1,2 @@
+class OrderDateilsController < ApplicationController
+end

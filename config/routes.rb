@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
-  resources :carts, only: [:index, :create, :update, :destroy]
-  delete 'carts/destroy_all' => 'carts#destroy_all'
-  resources :orders
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+  resources :cart_items, only: [:index, :create, :destroy, :update]
+
   resources :addresses
+  resources :genres, only: [:index, :create, :show, :edit, :update]
   post 'addresses/create' => 'addresses#index'
   patch 'addresses/update' => 'addresses#index'
 
@@ -37,16 +38,19 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :show, :edit, :update]
-    resources :items, only: [:create, :new, :edit, :update, :show, :index, :destroy ]
+    resources :items,only: [:index,:new,:create,:show,:edit,:update]
     resources :orders, only: [:index, :show]
-    resources :order_details, only: [:update]
     patch 'orders/:id' => 'orders#status_update'
   end
+
+  get 'orders/confirm' => 'orders#confirm'
+  # 注文機能が進み次第confirmのメソッドをpostに変える
+  get 'orders/thanks' => 'orders#thanks'
 
   resources :orders, only: [:index,:show,:update] do
     member do
       get :current_index
-      resource :order_details, only: [:update]
+      resource :order_details,only: [:update]
     end
     collection do
       get :today_order_index
