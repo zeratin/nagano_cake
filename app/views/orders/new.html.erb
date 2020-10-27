@@ -10,7 +10,7 @@
         <%= form_with(model: @order, url: '/orders/confirm', method: :post, local: true) do |f| %>
 
         <h5>支払方法</h5>
-          <%= f.radio_button :payment_method, :"" %>
+          <%= f.radio_button :payment_method, :"0" %>
           <%= f.label :payment_method, "クレジットカード" %><br>
 
           <%= f.radio_button :payment_method, :"1" %>

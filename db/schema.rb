@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_083508) do
+ActiveRecord::Schema.define(version: 2020_10_27_085622) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2020_10_21_083508) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "item_id"
@@ -104,7 +103,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_083508) do
     t.string "address"
     t.integer "postal_code"
     t.string "name"
-    t.string "payment_method"
+    t.integer "payment_method"
     t.integer "status"
     t.integer "total_payment"
     t.datetime "created_at", null: false

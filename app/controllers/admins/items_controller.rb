@@ -1,4 +1,5 @@
 class Admins::ItemsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @items = Item.all.page(params[:page]).per(10)
@@ -6,34 +7,24 @@ class Admins::ItemsController < ApplicationController
     @genre = Genre.new
   end
 
-  def show
-    @item = Item.find(params[:id])
-    @tax_included_price = @item.price * 1.1
-  end
-
-  def edit
-    @item = Item.find(params[:id])
+  def new
+    @item = Item.new
   end
 
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admins_items_path
+      redirect_to admins_item_path(@item)
     end
   end
 
-  def new
-    @item = Item.new
-  end
-
-
-  def destroy
+  def show
     @item = Item.find(params[:id])
-    if @item.destroy
-      redirect_to admins_items_path
-    end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
 
   def update
     @item = Item.find(params[:id])
@@ -44,6 +35,6 @@ class Admins::ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:name, :introduction, :price, :image, :genre_id, :is_active)
+      params.require(:item).permit(:name, :introduction, :price, :image, :genre_id)
     end
 end

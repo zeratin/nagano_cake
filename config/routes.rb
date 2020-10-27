@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
-
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :create, :destroy, :update]
 
@@ -20,12 +19,11 @@ Rails.application.routes.draw do
   post 'addresses/create' => 'addresses#index'
   patch 'addresses/update' => 'addresses#index'
 
-  resources :items, only: [:index,:show]
+  resources :items, only: [:index, :show]
 
-  resources :customers, only: [:index, :show, :edit, :update, :unsubscribe, :withdraw] do
-    get 'unsubscribe' => 'customers#unsubscribe'
-    patch 'withdraw' => 'customers#withdraw'
-  end
+  resources :customers, only: [:index, :show, :edit, :update]
+  get '/customers/unsubscribe/:id' => 'customers#unsubscribe', as: 'customer_unsubscribe'
+  patch '/customers/withdraw/:id' => 'customers#withdraw', as: 'customer_withdraw'
   get 'customer/get' => 'customers#show'
   patch 'customer/update' => 'customers#show'
 
@@ -34,6 +32,7 @@ Rails.application.routes.draw do
     registrations:'admins/registrations',
     passwords:'admins/passwords'
   }
+
   namespace :admins do
     get '/' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
@@ -43,11 +42,9 @@ Rails.application.routes.draw do
     patch 'orders/:id' => 'orders#status_update'
   end
 
-
-
   get 'orders/thanks' => 'orders#thanks'
   post 'orders/confirm' => 'orders#confirm'
   post 'orders' => 'orders#create'
-  
+
   resources :orders, only: [:index, :show, :new, :create, :destroy]
 end

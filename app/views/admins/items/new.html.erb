@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h3 class="head-line title_h2 text-center">商品新規登録</h3>
+      <h3>商品新規登録</h3>
       <%= form_with model:@item, url: admins_items_path, method: :post, class: "form-horizontal", local:true do |f| %>
         <% if @item.errors.any? %>
           <div id="error_explanation">
@@ -14,17 +14,11 @@
             </ul>
           </div>
         <% end %>
-        <div class="col-xs-4 col-xs-offset-1">
-          <div class="img_field">
-
-          </div>
+        <div class="col-xs-6">
+          <%= f.attachment_field :image %>
         </div>
         <div class="col-xs-6">
           <table>
-            <div class="form_group">
-            <h4>画像</h4>
-              <%= f.attachment_field :image %>
-            </div>
             <div class="form_group">
               <%= f.label :"商品名" %>
               <%= f.text_field :name %>
@@ -43,7 +37,7 @@
             </div>
             <div class="form_group">
               <%= f.label :"販売ステータス" %>
-              <%= f.select :is_active, [["販売中",true],["販売停止中",false]], prompt: "--選択してください--", class: "is_active" %>
+              <%= f.select :is_active, [["販売中",true],["販売停止中",false]], include_blank: "--選択してください--" %>
             </div>
           </table>
           <div class="actions col-xs-7">
@@ -54,3 +48,4 @@
     </div>
   </div>
 </div>
+

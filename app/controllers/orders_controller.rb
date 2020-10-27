@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     @addresses = current_customer.addresses
     cart_items = current_customer.cart_items
@@ -10,20 +12,29 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.where(customer_id: current_customer.id)
+
   end
 
   def show
     @order = Order.find(params[:id])
+    @sum = @order.total_payment - @order.shipping_cost
   end
 
   def confirm
     @order = Order.new
+
     @cart_items = current_customer.cart_items
     @order.payment_method = params[:order][:payment_method].to_i
     @order.address = params[:order][:address]
     @order.name = params[:order][:name]
     @order.postal_code = params[:order][:postal_code]
+    @sum = 0
+    @total_payment = 0
+    current_customer.cart_items.each do |cart_item|
+      @sum += (cart_item.item.price * 1.1).round * cart_item.amount
+    end
+    @total_payment = (@sum += 800).round
     if params[:order][:address_option] == "1"
       @address = current_customer
     elsif params[:order][:address_option] == "2"
@@ -39,11 +50,19 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items
-    if @order.save
-
+    @order.save
+    @cart_items.each do |cart_item|
+      order_detail = OrderDetail.new
+      order_detail.making_status = 0
+      order_detail.tax_included_price = (cart_item.item.price * 1.1).round
+      order_detail.order_id = @order.id
+      order_detail.amount = cart_item.amount
+      order_detail.item_id = cart_item.item.id
+      order_detail.save
+    end
 
     redirect_to orders_thanks_path
-    end
+
   end
 
   def destroy
@@ -59,6 +78,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-   params.require(:order).permit(:address, :payment_method, :name, :postal_code)
+   params.require(:order).permit(:address, :payment_method, :name, :postal_code, :total_payment, :shipping_cost)
   end
+
 end

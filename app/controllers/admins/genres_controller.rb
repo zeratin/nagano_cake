@@ -1,5 +1,5 @@
 class Admins::GenresController < ApplicationController
-  before_action :authenticate_admin!, except: [:show]
+  before_action :authenticate_admin!
 
   def index
     @genre = Genre.new
@@ -15,12 +15,6 @@ class Admins::GenresController < ApplicationController
        @genres = Genre.all
        render :index and return
     end
-  end
-
-  def show
-    @items = Item.all
-    @genre = Genre.find(params[:id])
-    @genres = @genre.items.order
   end
 
   def edit

@@ -6,6 +6,7 @@
           <!--< link_to 'ながのcake', root_path, class: 'navbar-brand' %>-->
         </a>
       </div>
+
       <div class="collapse navbar-collapse navbar-right">
         <ul class='nav navbar-nav navbar-right'>
           <% if admin_signed_in? %>
@@ -16,10 +17,17 @@
             <li><%= link_to"ログアウト", destroy_admin_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "About", home_about_path %></li>
-            <li><%= link_to "商品一覧", admins_items_path %></li>
+            <li><%= link_to "商品一覧", items_path %></li>
             <li><%= link_to"新規登録", new_customer_registration_path %></li>
             <li><%= link_to"ログイン", new_customer_session_path %></li>
           <% end %>
+          <div class="search">
+    			<%= form_with local: true do |f| %>
+            <%= f.text_field '' %>
+            <%= f.select '', [['商品名', 1], ['会員指名', 2]] %>
+            <%= f.submit '検索' %>
+          <% end %>
+    		  </div>
         </ul>
       </div>
     </div>

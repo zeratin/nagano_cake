@@ -17,6 +17,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "font-awesome";
 
 * {
   margin: 0;
@@ -33,6 +34,11 @@ main {
 main {
     padding-bottom: 50px;
 }
+
+.search {
+    text-align: center;
+}
+
 .back-image {
     background-image: url(back3.jpg);
     width: 100%;
@@ -44,11 +50,13 @@ main {
     // 画像の位置を固定する
     background-attachment: fixed;
 }
+
 .navbar-text {
     width: 45%;
     margin: 10 auto;
     text-align: right;
 }
+
 .top-image {
     width: 90%;
     height: 400px;
@@ -57,6 +65,7 @@ main {
     background-image: url(chocolate_cake.jpg);
     position: relative;
 }
+
 .top-image-content {
     background-color: rgba(255, 255, 255, 0.8);
     width: 80%;
@@ -65,28 +74,29 @@ main {
     top: 50px;
     left: 10%;
 }
+
 .top-text {
     text-align: center;
     padding-top: 80px;
 }
+
 .recommended-item {
     display: inline-block;
     display: flex;
-    text-align: center;
 }
 
-.box1 .box2 .box3 .box4 {
+.box-text {
+    padding-left: 12px;
+}
+
+.box1 {
     width: 200px;
     height: 200px;
-
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
-.box1 .box2 .box3 .box4 {
-    width: 200px;
-    height: 200px;
-}
 .box1-img {
-    background-image: url(cheese.jpg);
     width: 180px;
     height: 120px;
     margin-left: 10px;
@@ -94,37 +104,18 @@ main {
     background-size: cover;
     background-size: center;
 }
-.box2-img {
-    background-image: url(macaron.jpg);
-    width: 180px;
-    height: 120px;
-    margin-left: 10px;
-    margin-top: 10px;
-    background-size: cover;
-    background-size: center;
+
+.table-my {
+    width: 60%;
+    margin-top: 20px;
 }
-.box3-img {
-    background-image: url(pudding.jpg);
-    width: 180px;
-    height: 120px;
-    margin-left: 10px;
-    margin-top: 10px;
-    background-size: cover;
-    background-size: center;
-}
-.box4-img {
-    background-image: url(mizore.jpg);
-    width: 180px;
-    height: 120px;
-    margin-left: 10px;
-    margin-top: 10px;
-    background-size: cover;
-    background-size: center;
-}
+
+
 .about-text {
     text-align: center;
     margin-bottom: 20px;
 }
+
 .about-image {
     width: 600px;
     height: 400px;
@@ -133,10 +124,12 @@ main {
     background-position: center;
     margin: auto;
 }
+
 .item-index {
     display: flex;
     flex-wrap: wrap;
 }
+
 .items-list {
     width: 200px;
     height: 200px;
@@ -153,16 +146,20 @@ main {
 .item-show {
     padding-top: 30px;
 }
+
 .item-amount {
     margin-top: 80px;
 }
+
 .address-update-btn {
     text-align: right;
     margin-bottom: 10px;
 }
+
 .col-xs-6 {
     padding: 5px;
 }
+
 .col-xs-8 {
     padding: 5px;
 }
@@ -194,6 +191,7 @@ main {
 .withdrawal-text {
     text-align: center;
 }
+
 .withdrawal-btn {
     margin-top: 30px;
     text-align: center;
@@ -203,6 +201,7 @@ main {
 .btn-space {
     margin-right: 10px;
 }
+
 .thanks-btn {
     text-align: center;
     margin-top: 30px;
@@ -217,10 +216,12 @@ main {
 .btn-space {
     margin-right: 10px;
 }
+
 .footer-text {
     padding-bottom: 25px;
     padding-top: 25px;
 }
+
 footer {
     width: 100%;
     height: 50px;

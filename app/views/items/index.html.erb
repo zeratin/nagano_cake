@@ -1,31 +1,25 @@
 <%= render 'layouts/header' %>
+
 <div class="container">
   <div class="row">
-
     <div class="col-xs-3">
         <%= render 'items/search',  genres: @genres %>
     </div>
 
     <div class="col-xs-9">
-
-
-                </div>
-            </tbody>
-           </table>
-        <h2>商品一覧</h2>
-        <div class="item-index">
+      <h2>商品一覧</h2>
+      <div class="item-index">
         <% @items.each do |item| %>
-        <div class="items-list">
-          <%= link_to item_path(item) do %>
-            <%= attachment_image_tag item, :image, :fill, 180, 120, format: 'jpeg' %><br>
-          <% end %>
-          <%= item.name %><br>
-          ¥<%= item.price %><br>
-          <!--priceは税込み表示しないといけないので修正必要-->
-        </div>
+          <div class="items-list">
+            <%= link_to item_path(item) do %>
+              <%= attachment_image_tag item, :image, :fill, 180, 120, format: 'jpeg' %><br>
+            <% end %>
+            <%= item.name %><br>
+            ¥<%= tax_included_price(item.price) %>
+          </div>
         <% end %>
-        </div>
+      </div>
     </div>
   </div>
-  </div>
+</div>
 
