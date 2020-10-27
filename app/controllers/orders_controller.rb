@@ -35,17 +35,13 @@ class OrdersController < ApplicationController
     end
   end
 
-
-
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items
-    if @order.save
-
-
+    @order.save
+    @cart_items.destroy_all
     redirect_to orders_thanks_path
-    end
   end
 
   def destroy
