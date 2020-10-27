@@ -110,5 +110,4 @@ ActiveRecord::Schema.define(version: 2020_10_27_041517) do
     t.datetime "updated_at", null: false
     t.integer "customer_id"
   end
-
 end
