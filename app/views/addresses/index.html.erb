@@ -5,7 +5,7 @@
     <div class="col-xs-10">
 　　　 <div class="addresse-form">
         <h1>配送先登録/一覧</h1>
-        <%= form_with  model: @address  do |f| %>
+        <%= form_with model: @address, local: true  do |f| %>
         <div class="form-group">
           <label class="col-xs-4 control-label">郵便番号(ハイフンなし)</label>
           <div class="col-xs-6">

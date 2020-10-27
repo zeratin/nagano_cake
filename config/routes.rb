@@ -43,18 +43,9 @@ Rails.application.routes.draw do
     patch 'orders/:id' => 'orders#status_update'
   end
 
-  get 'orders/confirm' => 'orders#confirm'
-  # 注文機能が進み次第confirmのメソッドをpostに変える
   get 'orders/thanks' => 'orders#thanks'
+  post 'orders/confirm' => 'orders#confirm'
+  post 'orders' => 'orders#create'
 
-  resources :orders, only: [:index,:show,:update] do
-    member do
-      get :current_index
-      resource :order_details,only: [:update]
-    end
-    collection do
-      get :today_order_index
-    end
-  end
-
+  resources :orders, only: [:index, :show, :new, :create, :destroy]
 end
