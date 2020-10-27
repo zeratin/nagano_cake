@@ -1,5 +1,5 @@
 class CartItemsController < ApplicationController
-
+  before_action :authenticate_customer!
 
   def index
     @cart_items = current_customer.cart_items
@@ -10,10 +10,9 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     # @cart_item = CartItem.new(cart_item_params)を@cart_item = CartItem.find(cart_item_params)に間違えるとエラー起きます
     @cart_item.customer_id = current_customer.id
-    # binding.pry
-    if @cart_item.save
-      redirect_to cart_items_path
-    end
+    @cart_item.save
+    redirect_to cart_items_path
+
     # if @cart_item.blank?
     #   # @cart_item.saveにするとNoMethodErrorが起きる
     #   redirect_to cart_items_path
