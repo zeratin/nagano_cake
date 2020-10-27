@@ -44,8 +44,6 @@ class OrdersController < ApplicationController
     end
   end
 
-
-
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
@@ -60,9 +58,8 @@ class OrdersController < ApplicationController
       order_detail.item_id = cart_item.item.id
       order_detail.save
     end
-
+    @cart_items.destroy_all
     redirect_to orders_thanks_path
-
   end
 
   def destroy

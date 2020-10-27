@@ -8,7 +8,6 @@
             <th class="active">注文日</th>
             <th><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></th>
           </tr>
-
           <tr>
             <th class="active">配達先</th>
             <th>
@@ -17,21 +16,20 @@
               <%= @order.full_name %>
             </th>
           </tr>
-
           <tr>
             <th class="active">支払方法</th>
             <th><%= @order.payment_method %></th>
           </tr>
-
           <tr>
             <th class="active">ステータス</th>
             <th><%= @order.status %></th>
+            <th>ステータス</th>
+            <th><%= @order.status %></th>
           </tr>
       </table>
-
       </div>
+      
       <div class="col-xs-5">
-
       <table class="table table-bordered">
           <h4>請求情報</h4>
           <tr>
@@ -49,7 +47,6 @@
             <th><%= @order.total_payment.round.to_s(:delimited) %></th>
           </tr>
       </table>
-
       </div>
     </div>
 
@@ -73,8 +70,10 @@
           <% end %>
       </table>
       </div>
+      
       <div class="col-xs-4">
       </div>
+      
     </div>
   </div>
 </div>
