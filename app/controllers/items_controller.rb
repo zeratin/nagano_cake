@@ -1,13 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_customer!
-
   def index
     @genres = Genre.where(is_active: true)
     @genre = @genres.find_by(id: params[:search])
     unless @genre.nil?
       @items = Item.where(genre_id: @genre.id)
     else
-      @items = Item.all
+      @items = Item.where(is_active: true)
     end
   end
 

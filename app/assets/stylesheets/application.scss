@@ -25,14 +25,37 @@
   box-sizing: border-box;
 }
 
-
 main {
     padding-bottom: 50px;
 
 }
+table.table-bordered{
+    border: 1px solid black;
+  }
+table.table-bordered > tr > th{
+    border: 1px solid black;
+  }
+table.table-bordered > tr{
+    border: 1px solid black;
+  }
+  table.table-bordered > th{
+    border: 1px solid black;
+  }
+table.table-bordered > thead > tr > td{
+    border: 1px solid black;
+}
+table.table-bordered > thead > tr > th{
+    border: 1px solid black;
+}
+table.table-bordered > tbody > tr > td{
+    border: 1px solid black;
+}
+table.table-bordered > tbody > tr > th{
+    border: 1px solid black;
+}
 
-main {
-    padding-bottom: 50px;
+.search {
+    text-align: center;
 }
 
 .search {
@@ -105,10 +128,25 @@ main {
     background-size: center;
 }
 
+.item-edit {
+    margin-top: 130px;
+}
+.item-show-admin {
+    margin-top: 150px;
+}
 
 .table-my {
     width: 60%;
     margin-top: 20px;
+}
+
+.up-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.confirm-btn {
+    text-align: center;
 }
 
 
@@ -228,4 +266,13 @@ footer {
     width: 100%;
     height: 50px;
     text-align: center;
+}
+
+.devise_box {
+    margin: 50px;
+    padding: 5px;
+}
+
+.devise_field {
+    padding: 2px;
 }

@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <h3>ジャンル一覧・追加</h3>
-    <p id="notice"><%= flash[:notice] %></p>
+
     <div class="col-xs-6 col-xs-offset-1">
       <%= form_with model:@genre, :url => {:action => :create}, local:true do |f| %>
         <i class="fas fa-candy-cane"></i>ジャンル
@@ -34,7 +34,7 @@
               <% if genre.is_active == true %>
                 <td class="genre-td"><i class="fas fa-bullseye red"></i>有効</td>
               <% else %>
-                <td class="genre-td"><i class="fas fa-bullseye blue"></i>無効</td>
+                <td class="genre-td"><i class="fas fa-times"></i>無効</td>
               <% end %>
               <td class="genre-td"><%= link_to "編集する", edit_admins_genre_path(genre.id), class: "glyphicon glyphicon-pencil btn btn-success" %></td>
             </tr>

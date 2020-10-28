@@ -19,26 +19,36 @@
         </div>
         <div class="col-xs-6">
           <table>
-            <div class="form_group">
-              <%= f.label :"商品名" %>
-              <%= f.text_field :name %>
-            </div>
-            <div class="form_group">
-              <%= f.label :"商品説明" %>
-              <%= f.text_area :introduction %>
-            </div>
-            <div class="form_group">
-              <%= f.label :"ジャンル" %>
-              <%= f.collection_select :genre_id, Genre.where(is_active: true), :id, :name, include_blank: "--選択してください--" %>
-            </div>
-            <div class="form_group">
-              <%= f.label :"税抜価格" %>
-              <%= f.text_field :price %>円
-            </div>
-            <div class="form_group">
-              <%= f.label :"販売ステータス" %>
-              <%= f.select :is_active, [["販売中",true],["販売停止中",false]], include_blank: "--選択してください--" %>
-            </div>
+            <tr>
+              <div class="form_group">
+                <th><%= f.label :"商品名" %></th>
+                <th><%= f.text_field :name %></th>
+              </div>
+            </tr>
+            <tr>
+              <div class="form_group">
+                <th><%= f.label :"商品説明" %></th>
+                <th><%= f.text_area :introduction %></th>
+              </div>
+            </tr>
+            <tr>
+              <div class="form_group">
+                <th><%= f.label :"ジャンル" %></th>
+                <th><%= f.collection_select :genre_id, Genre.where(is_active: true), :id, :name, include_blank: "--選択してください--" %></th>
+              </div>
+            </tr>
+            <tr>
+              <div class="form_group">
+                <th><%= f.label :"税抜価格" %></th>
+                <th><%= f.text_field :price %>円</th>
+              </div>
+            </tr>
+            <tr>
+              <div class="form_group">
+                <th><%= f.label :"販売ステータス" %></th>
+                <th><%= f.select :is_active, [["販売中",true],["販売停止中",false]], include_blank: "--選択してください--" %></th>
+              </div>
+            </tr>
           </table>
           <div class="actions col-xs-7">
             <%= f.submit "新規登録", class: "btn btn-primary btn-lg pull-right" %>
