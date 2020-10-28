@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
     @genres = Genre.where(is_active: true)
     @genre = @genres.find_by(id: params[:search])
     unless @genre.nil?
-      @items = Item.where(genre_id: @genre.id)
+      @items = Item.where(genre_id: @genre.id, is_active: true)
     else
       @items = Item.where(is_active: true)
     end

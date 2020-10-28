@@ -21,7 +21,8 @@
       </div>
       <h2>オススメ商品</h2>
         <div class="recommended-item">
-          <% @item.each do |item| %>
+          <% @items.each do |item| %>
+          <% if item.genre.is_active %>
             <div class="box1">
               <%= link_to item_path(item) do %>
                 <%= attachment_image_tag item, :image, :fill, 180, 120, format: 'jpeg', class: "box1-img" %><br>
@@ -31,6 +32,7 @@
               ¥<%= tax_included_price(item.price) %>
               </div>
             </div>
+          <% end %>
           <% end %>
         </div>
         <div class="text-right">
