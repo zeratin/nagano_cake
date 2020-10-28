@@ -5,24 +5,42 @@
 
     </div>
     <div class="col-xs-10">
-      <h3>注文履歴一覧
-
-      <table>
+      <h3>注文履歴一覧</h3>
+      <table class="table table-bordered">
+      <thead>
+        <tr class="active">
+      	  <th>注文日</th>
+      	  <th>配送先</th>
+      	  <th>注文商品</th>
+      	  <th>支払金額</th>
+       	  <th>注文ステータス</th>
+       	  <th>詳細</th>
+        </tr>
+      </thead>
       <tbody>
       <% @orders.each do |order| %>
           <tr>
-            <td><%= order.postal_code %></td>
-            <td><%= order.address %></td>
-            <td><%= order.name %></td>
-            <td><%= link_to "詳細", order_path(order), class: "btn btn-primary" %></td>
-            <td><%= link_to "削除", order_path(order), method: :delete, class: "btn btn-danger" %></td>
+            <td>
+              <%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), order_path(order) %>
+            </td>
+            <td>
+              <%= order.postal_code %><br>
+              <%= order.address %><br>
+              <%= order.name %>
+            </td>
+            <td><% order.order_details.each do |order| %>
+                  <%= order.item.name %><br>
+                <% end %>
+            </td>
+            <td><%= order.total_payment.round.to_s(:delimited) %>円</td>
+            <td><%= order.status %></td>
+            <td><%= link_to "詳細", order_path(order), class: "btn btn-primary" %><%= link_to "削除", order_path(order), method: :delete, class: "btn btn-danger" %></td>
           </tr>
       <% end %>
       </tbody>
       </table>
     </div>
     <div class="col-xs-1">
-
     </div>
   </div>
 </div>

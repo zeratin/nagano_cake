@@ -21,10 +21,9 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
 
-  resources :customers, only: [:index, :show, :edit, :update, :unsubscribe, :withdraw] do
-    get 'unsubscribe' => 'customers#unsubscribe'
-    patch 'withdraw' => 'customers#withdraw'
-  end
+  resources :customers, only: [:index, :show, :edit, :update]
+  get '/customers/unsubscribe/:id' => 'customers#unsubscribe', as: 'customer_unsubscribe'
+  patch '/customers/withdraw/:id' => 'customers#withdraw', as: 'customer_withdraw'
   get 'customer/get' => 'customers#show'
   patch 'customer/update' => 'customers#show'
 
