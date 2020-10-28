@@ -8,7 +8,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
  Admin.create(email: 'admin@mail', password: 'password')
- Customer.create(email: 'test@test', password: '000000', postal_code: '0000000', address: '大阪府大阪市東淀川区', phone_number: '09000000000')
+ Customer.create(email: 'test@test', password: '000000', postal_code: '1111111', address: '大阪府大阪市東淀川区', phone_number: '09000000000')
  Genre.create(name: 'ケーキ')
  Genre.create(name: '焼き菓子')
  Genre.create(name: 'プリン')
@@ -21,9 +21,9 @@
              genre_id: 1
  )
  Item.create(
-             name: 'フルーツタルト', 
-             introduction: '旬のフルーツでデコレーションされた人気のミニタルト3個セットです。', 
-             price: '1500', 
+             name: 'フルーツタルト',
+             introduction: '旬のフルーツでデコレーションされた人気のミニタルト3個セットです。',
+             price: '1500',
              image: open('./app/assets/images/tarte.jpg'),
              genre_id: 1
  )
@@ -50,13 +50,13 @@
  )
  Item.create(
              name: 'アイシングクッキー',
-             introduction: 'カラフルで可愛い見た目が人気のアイシングクッキーです。イベントやプレゼントにオススメです。6個入り。', 
-             price: '500', 
+             introduction: 'カラフルで可愛い見た目が人気のアイシングクッキーです。イベントやプレゼントにオススメです。6個入り。',
+             price: '500',
              image: open('./app/assets/images/cookie.jpg'),
              genre_id: 2
  )
  Item.create(
-             name: 'クレームブリュレ', 
+             name: 'クレームブリュレ',
              introduction: '定番のクレームブリュレです。ほろ苦く甘いカラメルが人気の秘訣です。',
              price: '300',
              image: open('./app/assets/images/pudding.jpg'),
@@ -64,8 +64,8 @@
  )
  Item.create(
              name: 'ミルクプリン',
-             introduction: '優しい味わいが懐かしいミルクプリンです。', 
-             price: '250', 
+             introduction: '優しい味わいが懐かしいミルクプリンです。',
+             price: '250',
              image: open('./app/assets/images/milk.jpg'),
              genre_id: 3
  )
@@ -77,16 +77,16 @@
              genre_id: 3
  )
  Item.create(
-             name: '蜂蜜キャンディ', 
+             name: '蜂蜜キャンディ',
              introduction: '蜂蜜を練り込んだキャンディです。喉が痛む季節にオススメです。',
-             price: '400', 
+             price: '400',
              image: open('./app/assets/images/candy.jpg'),
              genre_id: 4
  )
  Item.create(
              name: 'みぞれ飴',
              introduction: '昔ながらのカラフルなみぞれ飴です。',
-             price: '400', 
+             price: '400',
              image: open('./app/assets/images/mizore.jpg'),
              genre_id: 4
  )

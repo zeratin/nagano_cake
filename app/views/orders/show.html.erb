@@ -28,7 +28,7 @@
           </tr>
       </table>
       </div>
-      
+
       <div class="col-xs-5">
       <table class="table table-bordered">
           <h4>請求情報</h4>
@@ -65,15 +65,15 @@
             <th><%= order.item.name %></th>
             <th><%= tax_included_price(order.item.price) %></th>
             <th><%= order.amount %></th>
-            <th><%= (tax_included_price(order.item.price).to_i * order.amount).round.to_s(:delimited) %></th>
+            <th><%= (tax_included_price(order.item.price).gsub(',','').to_i * order.amount).round.to_s(:delimited) %></th>
           </tr>
           <% end %>
       </table>
       </div>
-      
+
       <div class="col-xs-4">
       </div>
-      
+
     </div>
   </div>
 </div>
