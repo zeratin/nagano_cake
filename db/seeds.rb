@@ -8,7 +8,39 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
  Admin.create(email: 'admin@mail', password: 'password')
- Customer.create(email: 'test@test', password: '000000', postal_code: '1111111', address: '大阪府大阪市東淀川区', phone_number: '09000000000')
+ Customer.create(
+                 email: 'test1@test',
+                 password: '000000',
+                 postal_code: '1111111',
+                 address: '静岡県静岡市久能山東照宮',
+                 phone_number: '09000000000',
+                 first_name: '徳川',
+                 first_name_kana: 'トクガワ',
+                 last_name: '家康',
+                 last_name_kana: 'イエヤス'
+                 )
+ Customer.create(
+                 email: 'test2@test',
+                 password: '000000',
+                 postal_code: '2222222',
+                 address: '京都府京都市建勲神社',
+                 phone_number: '08000000000',
+                 first_name: '織田',
+                 first_name_kana: 'オダ',
+                 last_name: '信長',
+                 last_name_kana: 'ノブナガ'
+                 )
+ Customer.create(
+                 email: 'test3@test',
+                 password: '000000',
+                 postal_code: '3333333',
+                 address: '京都府京都市豊国神社',
+                 phone_number: '07000000000',
+                 first_name: '豊臣',
+                 first_name_kana: 'トヨトミ',
+                 last_name: '秀吉',
+                 last_name_kana: 'ヒデヨシ'
+                 )
  Genre.create(name: 'ケーキ')
  Genre.create(name: '焼き菓子')
  Genre.create(name: 'プリン')
