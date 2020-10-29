@@ -4,8 +4,10 @@ class ItemsController < ApplicationController
     @genre = @genres.find_by(id: params[:search])
     unless @genre.nil?
       @items = Item.where(genre_id: @genre.id, is_active: true)
+      @title = @genre.name
     else
       @items = Item.where(is_active: true)
+      @title = "商品"
     end
   end
 
